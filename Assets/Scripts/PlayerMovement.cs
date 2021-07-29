@@ -27,11 +27,13 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
+        // resets the velocity when player hits the floor and when velocity is negative
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
 
+        // main movement code for W, A, S ,D
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -39,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(move * speed * Time.deltaTime);
 
+        // allows player to jump only if spacebar is pressed and they are on the ground
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
