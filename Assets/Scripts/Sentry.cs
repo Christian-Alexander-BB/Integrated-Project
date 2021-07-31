@@ -5,7 +5,7 @@ using UnityEngine;
 public class Sentry : MonoBehaviour
 {
     private GameObject target;
-    private bool targetLocked;
+    public bool targetLocked;
 
     public float sentryHealth = 50;
 
@@ -32,6 +32,12 @@ public class Sentry : MonoBehaviour
                 Shoot();
             }
         }
+
+        if (sentryHealth <= 0)
+        {
+            shotReady = false;
+            gameObject.SetActive(false);
+        }
     }
 
     void Shoot()
@@ -48,12 +54,17 @@ public class Sentry : MonoBehaviour
         shotReady = true;
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
         {
             target = other.gameObject;
             targetLocked = true;
         }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        targetLocked = false;
     }
 }
