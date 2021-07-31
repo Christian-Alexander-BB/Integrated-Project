@@ -6,19 +6,22 @@ public class Vandal : MonoBehaviour
 {
     public GameObject vandalBullet;
     public GameObject vandalBulletSpawnPoint;
+    public GameObject player;
+    public int ammo;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        ammo = player.GetComponent<CollectAmmo>().ammo;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && ammo > 0)
         {
             Shoot();
+            ammo -= 1;
         }
     }
 

@@ -10,6 +10,7 @@ public class CollectAmmo : MonoBehaviour
     public GameObject collectAmmoPrompt;
 
     public int ammo = 10;
+    public GameObject vandal;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,7 @@ public class CollectAmmo : MonoBehaviour
                     result.transform.gameObject.SetActive(false);
                     collectAmmoPrompt.SetActive(false);
                     // increase ammo
-                    ammo += 10;
+                    vandal.GetComponent<Vandal>().ammo += 10;
                 }
             }
         }

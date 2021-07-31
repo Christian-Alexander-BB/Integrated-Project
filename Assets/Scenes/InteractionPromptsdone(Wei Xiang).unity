@@ -984,8 +984,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.3861626, z: 2.3464255}
-  m_Center: {x: 0, y: 0.6935782, z: 0.44039726}
+  m_Size: {x: 0.8277297, y: 1.3861626, z: 2.4146216}
+  m_Center: {x: -0.0048196316, y: 0.6935782, z: 0.40629923}
 --- !u!1001 &296138508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3703,6 +3703,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vandalBullet: {fileID: 1588087579}
   vandalBulletSpawnPoint: {fileID: 1186577593}
+  player: {fileID: 1511573037}
+  ammo: 0
 --- !u!1 &1186577593
 GameObject:
   m_ObjectHideFlags: 0
@@ -5101,6 +5103,7 @@ MonoBehaviour:
   interactionDistance: 2
   collectAmmoPrompt: {fileID: 411335182}
   ammo: 10
+  vandal: {fileID: 1177392364}
 --- !u!114 &1511573043
 MonoBehaviour:
   m_ObjectHideFlags: 0
