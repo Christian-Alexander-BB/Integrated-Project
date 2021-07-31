@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if player have less than or equals to 0 health, player dies
         if (health <= 0)
         {
             Die();

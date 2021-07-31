@@ -15,21 +15,26 @@ public class CollectAmmo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // hide the prompt 
         collectAmmoPrompt.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        // initialise raycasting from the fps cam
         RaycastHit result;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out result, interactionDistance, ammoMask))
         {
             if (result.transform.name == "Ammo")
             {
+                // show the prompt
                 collectAmmoPrompt.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.F))
                 {
+                    // hide ammo game object
                     result.transform.gameObject.SetActive(false);
+                    // hide the prompt
                     collectAmmoPrompt.SetActive(false);
                     // increase ammo
                     vandal.GetComponent<Vandal>().ammo += 10;
@@ -37,6 +42,7 @@ public class CollectAmmo : MonoBehaviour
             }
         }
 
+        // if player walks away from the ammo, prompt will hide
         else
         {
             collectAmmoPrompt.SetActive(false);
