@@ -7,6 +7,7 @@ public class Vandal : MonoBehaviour
     public GameObject vandalBullet;
     public GameObject vandalBulletSpawnPoint;
     public GameObject player;
+    public ParticleSystem muzzleFlash;
     public int ammo;
 
     // Start is called before the first frame update
@@ -24,6 +25,7 @@ public class Vandal : MonoBehaviour
         // gets input if player clicks the shoot button and if there is still ammo
         if (Input.GetKeyDown(KeyCode.Mouse0) && ammo > 0)
         {
+            muzzleFlash.Play();
             Shoot();
             ammo -= 1;
         }
