@@ -12,6 +12,7 @@ public class Keypad : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // hide enter code prompt first
         enterCodePrompt.SetActive(false);
     }
 
@@ -23,6 +24,7 @@ public class Keypad : MonoBehaviour
         {
             if (result.transform.name == "Keypad")
             {
+                // show enter code prompt if close
                 enterCodePrompt.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.F))
                 {
@@ -33,6 +35,7 @@ public class Keypad : MonoBehaviour
 
         else
         {
+            // if raycast does not detect keypad, hide the enter code prompt
             enterCodePrompt.SetActive(false);
         }
     }

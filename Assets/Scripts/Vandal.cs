@@ -25,6 +25,7 @@ public class Vandal : MonoBehaviour
         // gets input if player clicks the shoot button and if there is still ammo
         if (Input.GetKeyDown(KeyCode.Mouse0) && ammo > 0)
         {
+            // plays the muzzle flash vfx
             muzzleFlash.Play();
             Shoot();
             ammo -= 1;

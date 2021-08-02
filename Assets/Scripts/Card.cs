@@ -12,20 +12,24 @@ public class Card : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // hide the use card prompt first
         useCardPrompt.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        // use raycasting to detect the game object in the card layer
         RaycastHit result;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out result, interactionDistance, cardMask))
         {
             if (result.transform.name == "CardSensor")
             {
+                // show the use card prompt if close
                 useCardPrompt.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    // hides the use card prompt
                     useCardPrompt.SetActive(false);
                 }
             }
@@ -33,6 +37,7 @@ public class Card : MonoBehaviour
 
         else
         {
+            // if raycast does not detect card, hide the use card prompt
             useCardPrompt.SetActive(false);
         }
     }
