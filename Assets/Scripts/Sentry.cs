@@ -40,6 +40,7 @@ public class Sentry : MonoBehaviour
             }
         }
 
+        // stops the animation of the sentry gun if no target is detected
         else if (targetLocked == false)
         {
             sentryRotation.SetBool("sentryActive", false);

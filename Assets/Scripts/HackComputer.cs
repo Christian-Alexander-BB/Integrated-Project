@@ -12,6 +12,7 @@ public class HackComputer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // hide hack computer prompt first
         hackPrompt.SetActive(false);
     }
 
@@ -23,11 +24,13 @@ public class HackComputer : MonoBehaviour
         {
             if (result.transform.name == "Computer")
             {
+                // show hack computer prompt if close
                 hackPrompt.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     // getting the codes should be here
 
+                    // hide hack computer prompt
                     hackPrompt.SetActive(false);
                 }
             }
@@ -35,6 +38,7 @@ public class HackComputer : MonoBehaviour
 
         else
         {
+            // if raycast does not detect the computer, hide hack computer prompt
             hackPrompt.SetActive(false);
         }
     }
