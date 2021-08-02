@@ -11519,6 +11519,7 @@ GameObject:
   - component: {fileID: 8349618595175876777}
   - component: {fileID: 3257145167066599961}
   - component: {fileID: 8917559347836069014}
+  - component: {fileID: 1670924007402625620}
   m_Layer: 0
   m_Name: pCylinder11
   m_TagString: Untagged
@@ -11526,6 +11527,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &1670924007402625620
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670924007402625619}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 327a29f576e77c3438b516c4cad6190b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1673899849137747062
 Transform:
   m_ObjectHideFlags: 0
@@ -11715,6 +11735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLocked: 0
+  sentryRotation: {fileID: 1670924007402625620}
   sentryHealth: 50
   sentryTopPart: {fileID: 489746604}
   bulletSpawnPoint: {fileID: 1087801085}
