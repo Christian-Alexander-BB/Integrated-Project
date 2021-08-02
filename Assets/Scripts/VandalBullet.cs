@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class VandalBullet : MonoBehaviour
 {
     public float movementSpeed;
-    public float damage;
+    public float sentryDamage;
     public GameObject target;
 
     // Update is called once per frame
@@ -17,11 +17,10 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // if the bullet hits the player, decreases the health of the player and destroys the bullet
-        if (other.tag == "Player")
+        // if the bullet hits the sentry gun, decreases the health of the sentry gun and destroys the bullet
+        if (other.tag == "Sentry")
         {
-            target = other.gameObject;
-            target.GetComponent<PlayerHealth>().health -= damage;
+            target.GetComponent<Sentry>().sentryHealth -= sentryDamage;
             Destroy(gameObject);
         }
     }
