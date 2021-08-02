@@ -6,6 +6,7 @@ public class Sentry : MonoBehaviour
 {
     private GameObject target;
     public bool targetLocked;
+    public Animator sentryRotation;
 
     public float sentryHealth = 50;
 
@@ -28,6 +29,7 @@ public class Sentry : MonoBehaviour
         // shooting and detecting enemies
         if (targetLocked)
         {
+            sentryRotation.SetBool("sentryActive", true);
             // looks at the player
             sentryTopPart.transform.LookAt(target.transform);
 
@@ -36,6 +38,11 @@ public class Sentry : MonoBehaviour
             {
                 Shoot();
             }
+        }
+
+        else if (targetLocked == false)
+        {
+            sentryRotation.SetBool("sentryActive", false);
         }
 
         // destroys the sentry gun if sentry gun health is less than or equals to 0
