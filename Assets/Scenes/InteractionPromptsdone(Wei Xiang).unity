@@ -3366,7 +3366,7 @@ GameObject:
   - component: {fileID: 1177392365}
   - component: {fileID: 1177392366}
   m_Layer: 0
-  m_Name: vandal_testing
+  m_Name: weixiang_vandal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11687,7 +11687,7 @@ GameObject:
   - component: {fileID: 3728287993721023185}
   - component: {fileID: 3728287993721023184}
   m_Layer: 0
-  m_Name: sentry_final
+  m_Name: weixiang_sentry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
