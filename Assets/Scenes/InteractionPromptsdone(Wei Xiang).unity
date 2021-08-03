@@ -11818,7 +11818,7 @@ GameObject:
   - component: {fileID: 191620299815808143}
   - component: {fileID: 2687579068241975365}
   m_Layer: 0
-  m_Name: card_testing
+  m_Name: weixiang_card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
