@@ -5,7 +5,7 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     public Camera fpsCam;
-    public LayerMask cardMask;
+    public LayerMask cardSensorMask;
     public float interactionDistance = 2f;
     public GameObject useCardPrompt;
 
@@ -21,7 +21,7 @@ public class Card : MonoBehaviour
     {
         // use raycasting to detect the game object in the card layer
         RaycastHit result;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out result, interactionDistance, cardMask))
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out result, interactionDistance, cardSensorMask))
         {
             if (result.transform.name == "CardSensor")
             {
@@ -37,7 +37,7 @@ public class Card : MonoBehaviour
 
         else
         {
-            // if raycast does not detect card, hide the use card prompt
+            // if raycast does not detect card sensor, hide the use card prompt
             useCardPrompt.SetActive(false);
         }
     }

@@ -1559,7 +1559,7 @@ RectTransform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1392243139}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -1987,6 +1987,85 @@ Transform:
   m_Father: {fileID: 4104567624059859061}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &508109691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 508109692}
+  - component: {fileID: 508109694}
+  - component: {fileID: 508109693}
+  m_Layer: 5
+  m_Name: CollectCardPrompt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &508109692
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508109691}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_Children: []
+  m_Father: {fileID: 1392243139}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 80, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &508109693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508109691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 300
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 300
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 'Press F to collect card. '
+--- !u!222 &508109694
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508109691}
+  m_CullTransparentMesh: 1
 --- !u!1 &526895773
 GameObject:
   m_ObjectHideFlags: 0
@@ -2274,7 +2353,7 @@ GameObject:
   - component: {fileID: 626824868}
   - component: {fileID: 626824867}
   - component: {fileID: 626824866}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: CardSensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4254,6 +4333,7 @@ RectTransform:
   - {fileID: 2037416950}
   - {fileID: 805122050}
   - {fileID: 1346686500}
+  - {fileID: 508109692}
   - {fileID: 411335183}
   m_Father: {fileID: 0}
   m_RootOrder: 16
@@ -4809,6 +4889,7 @@ GameObject:
   - component: {fileID: 1511573045}
   - component: {fileID: 1511573044}
   - component: {fileID: 1511573046}
+  - component: {fileID: 1511573047}
   m_Layer: 0
   m_Name: First Person Player
   m_TagString: Player
@@ -4923,9 +5004,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 1687258584}
-  cardMask:
+  cardSensorMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4096
   interactionDistance: 2
   useCardPrompt: {fileID: 1346686499}
 --- !u!114 &1511573044
@@ -4977,6 +5058,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!114 &1511573047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511573037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24b4fb1f9988c3c4c9aff0e1a19d9248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fpsCam: {fileID: 1687258584}
+  cardMask:
+    serializedVersion: 2
+    m_Bits: 512
+  interactionDistance: 2
+  collectCardPrompt: {fileID: 508109691}
+  cardCollected: 0
 --- !u!1 &1546419602
 GameObject:
   m_ObjectHideFlags: 0
@@ -11817,13 +11917,28 @@ GameObject:
   - component: {fileID: 3821056004519977770}
   - component: {fileID: 191620299815808143}
   - component: {fileID: 2687579068241975365}
-  m_Layer: 0
+  - component: {fileID: 4489190099652262289}
+  m_Layer: 9
   m_Name: weixiang_card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &4489190099652262289
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4489190099652262288}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4068373912626513877, guid: ae75a7a9460e1b4498f86ff9f756a20a, type: 3}
 --- !u!33 &7386506332093933839
 MeshFilter:
   m_ObjectHideFlags: 0
