@@ -41,5 +41,7 @@ public class Vandal : MonoBehaviour
         // this is to allow the mesh and the collider of the bullet to reappear for the instantiated bullets only
         _vandalBullet.GetComponent<MeshRenderer>().enabled = true;
         _vandalBullet.GetComponent<SphereCollider>().enabled = true;
+        // set a duration for the bullet to travel before destroying it
+        Destroy(_vandalBullet.gameObject, 3);
     }
 }

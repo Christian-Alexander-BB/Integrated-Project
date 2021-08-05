@@ -19,7 +19,7 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // use raycasting to detect the game object in the card layer
+        // use raycasting to detect the card sensor in the card sensor layer
         RaycastHit result;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out result, interactionDistance, cardSensorMask))
         {
