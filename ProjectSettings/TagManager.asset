@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Sentry
+  - GameMusic
   - VandalBullet
   layers:
   - Default
@@ -19,7 +20,7 @@ TagManager:
   - Card
   - Keypad
   - Computer
-  - 
+  - CardSensor
   - 
   - 
   - 

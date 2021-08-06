@@ -62,6 +62,8 @@ public class Sentry : MonoBehaviour
         // this is to allow the mesh and the collider of the bullet to reappear for the instantiated bullets only
         _bullet.GetComponent<MeshRenderer>().enabled = true;
         _bullet.GetComponent<SphereCollider>().enabled = true;
+        // set a duration for the bullet to travel before destroying it
+        Destroy(_bullet.gameObject, 3);
         // for the cooldown between each shot
         shotReady = false;
         StartCoroutine(FireRate());
