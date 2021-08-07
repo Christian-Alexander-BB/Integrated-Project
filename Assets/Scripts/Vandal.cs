@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Vandal : MonoBehaviour
 {
+    private AudioSource gunShot;
     public GameObject vandalBullet;
     public GameObject vandalBulletSpawnPoint;
     public GameObject player;
     public ParticleSystem muzzleFlash;
     public int ammo;
+    public float fireTimer;
+    private bool shotReady;
 
     // Start is called before the first frame update
     void Start()
     {
+        // initialise the shooting of the vandal
+        shotReady = true;
+        // get the gunshot sound effect
+        gunShot = GetComponent<AudioSource>();
+        // get the amount of bullets from the collect ammo script
         ammo = player.GetComponent<CollectAmmo>().ammo;
         // disables the mesh and collider of the original bullet so it doesn't affect anything in the game as the player did not press the shoot button
         vandalBullet.GetComponent<MeshRenderer>().enabled = false;
@@ -23,11 +31,14 @@ public class Vandal : MonoBehaviour
     void Update()
     {
         // gets input if player clicks the shoot button and if there is still ammo
-        if (Input.GetKeyDown(KeyCode.Mouse0) && ammo > 0)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && ammo > 0 && shotReady)
         {
+            // plays the gunshot sound effect
+            gunShot.Play();
             // plays the muzzle flash vfx
             muzzleFlash.Play();
             Shoot();
+            // minus 1 bullet after firing once
             ammo -= 1;
         }
     }
@@ -42,6 +53,16 @@ public class Vandal : MonoBehaviour
         _vandalBullet.GetComponent<MeshRenderer>().enabled = true;
         _vandalBullet.GetComponent<SphereCollider>().enabled = true;
         // set a duration for the bullet to travel before destroying it
-        Destroy(_vandalBullet.gameObject, 3);
+        Destroy(_vandalBullet.gameObject, 10);
+        // set the fire rate of the vandal
+        shotReady = false;
+        StartCoroutine(FireRate());
+    }
+
+    // set the fire rate of the vandal
+    IEnumerator FireRate()
+    {
+        yield return new WaitForSeconds(fireTimer);
+        shotReady = true;
     }
 }
