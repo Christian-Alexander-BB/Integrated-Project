@@ -8,6 +8,8 @@ public class OpenDoor : MonoBehaviour
     public LayerMask doorMask;
     public float interactionDistance = 2f;
     public GameObject doorPrompt;
+    public bool doorOpenFlag = false;
+    public Animator openDoor;
 
     // Start is called before the first frame update
     void Start()
@@ -33,8 +35,22 @@ public class OpenDoor : MonoBehaviour
                 // opens the door if player presses E
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    doorPrompt.SetActive(false);
-                    // play animation for opening door
+                    if (!doorOpenFlag)
+                    {
+                        doorOpenFlag = true;
+                        doorPrompt.SetActive(false);
+                        // play animation for opening door
+                        openDoor.SetBool("openDoor", true);
+                    }
+
+                    else if (doorOpenFlag)
+                    {
+                        doorOpenFlag = false;
+                        doorPrompt.SetActive(false);
+                        // play animation for closing door
+                        openDoor.SetBool("openDoor", false);
+                    }
+                    
                 }
             }
         }
