@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    public GameObject player;
     
     //ui text for added on the ui
     public Text playerHealthtxt;
@@ -15,6 +17,9 @@ public class GameManager : MonoBehaviour
     //players stats
     public static float health =100;
     public static float ammoleft = 20;
+
+    public float playerHealth;
+    //public int ammo;
     
 
    
@@ -37,6 +42,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //ammo = GetComponent<Vandal>().ammo;
 
         //on start the game set the int/float to respective 
 
@@ -44,7 +50,7 @@ public class GameManager : MonoBehaviour
         ammoleft = 20;
         
         //find the game object
-        playerHealthtxt = GameObject.Find("playerHealthtxt").GetComponent<Text>();
+        //playerHealthtxt = GameObject.Find("playerHealthtxt").GetComponent<Text>();
         
 
 
@@ -65,10 +71,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-            //update health and some pickups for the ui 
+        playerHealth = player.GetComponent<PlayerHealth>().health;
 
-            playerHealthtxt.text = " Health:" +health;
+        //update health and some pickups for the ui 
+
+        playerHealthtxt.text = " Health:" + playerHealth;
         Ammotxt.text = " Ammo left :" + ammoleft;
         playerdeath();
 
