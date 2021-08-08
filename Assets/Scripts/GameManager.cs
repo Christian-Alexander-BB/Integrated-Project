@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public GameObject player;
+    public GameObject vandal;
     
     //ui text for added on the ui
     public Text playerHealthtxt;
@@ -19,7 +20,7 @@ public class GameManager : MonoBehaviour
     public static float ammoleft = 20;
 
     public float playerHealth;
-    //public int ammo;
+    public int ammo;
     
 
    
@@ -57,8 +58,8 @@ public class GameManager : MonoBehaviour
         //set the text to respective text 
         quest1.text = " 1 : Find the bank vault.";
         quest2.text = " 2 : Find and obtain the keycard.";
-        quest3.text = " 3 : Find out what the code is.";
-        quest4.text = " 4 : Find all digits of the code.";
+        quest3.text = " 3 : Find all digits of the code.";
+        quest4.text = " 4 : Use keycard and enter code";
         quest5.text = " 5 : Open the vault.";
         quest6.text = " 6 : Get the cash and find safety deposit box 1179.";
         quest7.text = " 7 : Find the key for safety deposit box 1179. It is in the building somewhere. ";
@@ -72,11 +73,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         playerHealth = player.GetComponent<PlayerHealth>().health;
+        ammo = vandal.GetComponent<Vandal>().ammo;
 
         //update health and some pickups for the ui 
 
-        playerHealthtxt.text = " Health:" + playerHealth;
-        Ammotxt.text = " Ammo left :" + ammoleft;
+        playerHealthtxt.text = " Health: " + playerHealth;
+        Ammotxt.text = " Ammo: " + ammo;
         playerdeath();
 
 
