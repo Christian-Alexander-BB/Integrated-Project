@@ -2559,8 +2559,8 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Health : '
 --- !u!222 &599364636
@@ -3604,10 +3604,10 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Ammo Left:'
+  m_Text: 'Ammo:'
 --- !u!222 &840491983
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5103,9 +5103,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1511573037}
+  vandal: {fileID: 1177392364}
   playerHealthtxt: {fileID: 599364635}
   Ammotxt: {fileID: 840491982}
   playerHealth: 0
+  ammo: 0
   quest1: {fileID: 384261026}
   quest2: {fileID: 1534243771}
   quest3: {fileID: 1723994470}
@@ -5745,7 +5747,7 @@ MonoBehaviour:
   interactionDistance: 2
   doorPrompt: {fileID: 943354993}
   doorOpenFlag: 0
-  openDoor: {fileID: 0}
+  openDoor: {fileID: 1367396130}
 --- !u!114 &1511573042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12638,7 +12640,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Task
+  m_Text: Quest
 --- !u!222 &2103782603
 CanvasRenderer:
   m_ObjectHideFlags: 0
