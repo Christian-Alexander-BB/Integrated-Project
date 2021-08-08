@@ -9,6 +9,7 @@ public class CollectCard : MonoBehaviour
     public float interactionDistance = 2f;
     public GameObject collectCardPrompt;
     public bool cardCollected = false;
+    public GameObject uiPrompts;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class CollectCard : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     // sets the card to be collected, hides the card and the collect card prompt
+                    uiPrompts.GetComponent<GameManager>().quest2.text = "2. Find and obtain the keycard. (complete)";
                     cardCollected = true;
                     result.transform.gameObject.SetActive(false);
                     collectCardPrompt.SetActive(false);

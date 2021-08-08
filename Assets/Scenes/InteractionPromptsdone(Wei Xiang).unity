@@ -1037,7 +1037,7 @@ GameObject:
   - component: {fileID: 295256818}
   m_Layer: 0
   m_Name: damageTaker
-  m_TagString: Sentry
+  m_TagString: SentryDamage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6240,7 +6240,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 1
   sentryDamage: 10
-  target: {fileID: 3728287993721023183}
+  target:
+  - {fileID: 0}
 --- !u!135 &1588087582
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14118,7 +14119,7 @@ GameObject:
   - component: {fileID: 3728287993721023184}
   m_Layer: 0
   m_Name: weixiang_sentry
-  m_TagString: attack
+  m_TagString: Sentry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
