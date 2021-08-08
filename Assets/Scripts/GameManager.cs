@@ -87,11 +87,12 @@ public class GameManager : MonoBehaviour
         }
        
         //check if keycard is found
-        //if (CardSensor >= 1)
-       // {
-         //   quest2.text = "2 : Find and obtain the keycard ( complete)";
+       // if (CardSensor >= 1)
+        //{
+          //  quest2.text = "2 : Find and obtain the keycard ( complete)";
             
         //}
+
          
 
     }
