@@ -6,8 +6,13 @@ public class VandalBullet : MonoBehaviour
 {
     public float movementSpeed;
     public float sentryDamage;
+<<<<<<< HEAD
     public float damageToDrone = 20f;
     public GameObject target;
+=======
+    public GameObject target1;
+    public GameObject target2;
+>>>>>>> 1d74f27e7aeb3bc121d7704aac18873ae7b025a1
 
     // Update is called once per frame
     void Update()
@@ -19,10 +24,22 @@ public class VandalBullet : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // if the bullet hits the sentry gun, decreases the health of the sentry gun and destroys the bullet
-        if (other.tag == "Sentry")
+        if (other.tag == "SentryDamage")
         {
-            target.GetComponent<Sentry>().sentryHealth -= sentryDamage;
-            Destroy(gameObject);
+            // health system for sentry 1
+            if (other.gameObject.name == "damageTaker1")
+            {
+                target1.GetComponent<SentryHealth1>().sentryHealth1 -= sentryDamage;
+                Destroy(gameObject);
+            }
+
+            // health system for sentry 2
+            if (other.gameObject.name == "damageTaker2")
+            {
+                target2.GetComponent<SentryHealth2>().sentryHealth2 -= sentryDamage;
+                Destroy(gameObject);
+            }
+            
         }
 
         Debug.Log("The Bullet Hit: " + other.gameObject.name);
