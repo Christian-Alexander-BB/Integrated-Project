@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     //ui text for added on the ui
     public Text playerHealthtxt;
     public Text Ammotxt;
+    public Text Cashtxt;
     
     //players stats
     public static float health =100;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     public float playerHealth;
     public int ammo;
+    public int cash;
     
 
    
@@ -74,11 +76,13 @@ public class GameManager : MonoBehaviour
     {
         playerHealth = player.GetComponent<PlayerHealth>().health;
         ammo = vandal.GetComponent<Vandal>().ammo;
+        cash = player.GetComponent<CollectCash>().cash;
 
         //update health and some pickups for the ui 
 
         playerHealthtxt.text = " Health: " + playerHealth;
         Ammotxt.text = " Ammo: " + ammo;
+        Cashtxt.text = " Cash: " + cash;
         playerdeath();
 
 

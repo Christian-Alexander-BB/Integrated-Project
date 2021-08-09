@@ -28,7 +28,7 @@ public class CollectAmmo : MonoBehaviour
         {
             if (result.transform.name == "Ammo_Box_lo")
             {
-                // show the prompt
+                // show the collect ammo prompt
                 collectAmmoPrompt.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.F))
                 {
