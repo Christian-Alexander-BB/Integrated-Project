@@ -22,7 +22,7 @@ public class Quest1 : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            uiPrompts.GetComponent<GameManager>().quest1.text = " 1. Find the bank vault. (complete)";
+            uiPrompts.GetComponent<GameManager>().quest1.text = "1. Find the bank vault. (complete)";
         }
     }
 }
