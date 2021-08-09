@@ -54,7 +54,7 @@ public class OpenDepBox : MonoBehaviour
                     {
                         // play animation for opening the box
                         // set the red diamond object to reappear
-                        uiPrompts.GetComponent<GameManager>().quest9.text = " 8 : Return to the vault. Open safety deposit box 1179.";
+                        uiPrompts.GetComponent<GameManager>().quest9.text = " 8 : Return to the vault. Open safety deposit box 1179. (completed)";
                     }
                 }
             }
