@@ -27,6 +27,6 @@ public class PlayerHealth : MonoBehaviour
     {
         //show game over UI
         Time.timeScale = 0;
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 }
