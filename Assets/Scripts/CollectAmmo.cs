@@ -26,7 +26,7 @@ public class CollectAmmo : MonoBehaviour
         RaycastHit result;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out result, interactionDistance, ammoMask))
         {
-            if (result.transform.name == "Ammo")
+            if (result.transform.name == "Ammo_Box_lo")
             {
                 // show the prompt
                 collectAmmoPrompt.SetActive(true);
