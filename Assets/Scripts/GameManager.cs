@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
         quest1.text = " 1 : Find the bank vault.";
         quest2.text = " 2 : Find and obtain the keycard.";
         quest3.text = " 3 : Find all digits of the code.";
-        quest4.text = " 4 : Use keycard and enter code";
+        quest4.text = " 4 : Use keycard and enter code.";
         quest5.text = " 5 : Open the vault.";
         quest6.text = " 6 : Get the cash and find safety deposit box 1179.";
         quest7.text = " 7 : Find the key for safety deposit box 1179. It is in the building somewhere. ";
