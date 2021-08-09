@@ -63,8 +63,8 @@ public class GameManager : MonoBehaviour
         quest3.text = " 3 : Find all digits of the code.";
         quest4.text = " 4 : Use keycard and enter code.";
         quest5.text = " 5 : Open the vault.";
-        quest6.text = " 6 : Get the cash and find safety deposit box 1179.";
-        quest7.text = " 7 : Find the key for safety deposit box 1179. It is in the building somewhere.";
+        quest6.text = " 6 : Get the cash and interact with safety deposit box 1179.";
+        quest7.text = " 7 : Find the key for safety deposit box 1179. It is somewhere in the building.";
         quest8.text = " 8 : Return to the vault. Open safety deposit box 1179.";
         quest9.text = " 9 : Obtain the Red Diamond.";
         quest10.text = "10 :Escape";
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
 
         playerHealthtxt.text = " Health: " + playerHealth;
         Ammotxt.text = " Ammo: " + ammo;
-        Cashtxt.text = " Cash: " + cash;
+        Cashtxt.text = " Cash: " + cash + " / 1000";
         playerdeath();
 
 

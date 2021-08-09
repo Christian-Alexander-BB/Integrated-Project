@@ -22,8 +22,9 @@ public class CollectAmmo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // initialise raycasting from the fps cam
+        // initialise raycasting to detect ammo
         RaycastHit result;
+        // allow raycast to only detect objects in the ammo layer
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out result, interactionDistance, ammoMask))
         {
             if (result.transform.name == "Ammo_Box_lo")
@@ -42,9 +43,9 @@ public class CollectAmmo : MonoBehaviour
             }
         }
 
-        // if player walks away from the ammo, prompt will hide
         else
         {
+            // if player walks away from the ammo, prompt will hide
             collectAmmoPrompt.SetActive(false);
         }
     }

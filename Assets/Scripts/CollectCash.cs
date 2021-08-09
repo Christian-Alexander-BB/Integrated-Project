@@ -9,6 +9,7 @@ public class CollectCash : MonoBehaviour
     public float interactionDistance = 2f;
     public GameObject collectCashPrompt;
     public int cash;
+    public bool cashCollected = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,11 @@ public class CollectCash : MonoBehaviour
                 {
                     // addes the amount of cash to the player
                     cash += 100;
+                    // player has collected enough cash
+                    if (cash >= 1000)
+                    {
+                        cashCollected = true;
+                    }
                     // hides cash
                     result.transform.gameObject.SetActive(false);
                 }
