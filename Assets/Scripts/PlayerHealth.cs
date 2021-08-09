@@ -5,9 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float health = 100;
+    [SerializeField] GameObject securityDroneBullet;
+    public float health = 100f;
+    float droneBulletDamage;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        droneBulletDamage = securityDroneBullet.GetComponent<DroneBullets>().bulletDamage;
+    }
+
     void Update()
     {
         // if player have less than or equals to 0 health, player dies
@@ -17,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
         //show game over UI
         Time.timeScale = 0;

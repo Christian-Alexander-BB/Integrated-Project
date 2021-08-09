@@ -6,6 +6,7 @@ public class VandalBullet : MonoBehaviour
 {
     public float movementSpeed;
     public float sentryDamage;
+    public float damageToDrone = 20f;
     public GameObject target1;
     public GameObject target2;
 
@@ -36,5 +37,7 @@ public class VandalBullet : MonoBehaviour
             }
             
         }
+
+        Debug.Log("The Bullet Hit: " + other.gameObject.name);
     }
 }

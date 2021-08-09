@@ -8,6 +8,7 @@ TagManager:
   - GameMusic
   - attack
   - SentryDamage
+  - VandalBullet
   layers:
   - Default
   - TransparentFX
