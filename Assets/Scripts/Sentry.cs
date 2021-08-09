@@ -8,8 +8,6 @@ public class Sentry : MonoBehaviour
     public bool targetLocked;
     public Animator sentryRotation;
 
-    public float sentryHealth = 50;
-
     public GameObject sentryTopPart;
     public GameObject bulletSpawnPoint;
     public GameObject bullet;
@@ -18,6 +16,7 @@ public class Sentry : MonoBehaviour
 
     void Start()
     {
+        // initialise to allow shooting for the sentry
         shotReady = true;
         // disables the mesh and collider of the original bullet so it doesn't affect anything in the game as the player is not in the shooting range yet
         bullet.GetComponent<MeshRenderer>().enabled = false;
@@ -46,12 +45,6 @@ public class Sentry : MonoBehaviour
             sentryRotation.SetBool("sentryActive", false);
         }
 
-        // destroys the sentry gun if sentry gun health is less than or equals to 0
-        if (sentryHealth <= 0)
-        {
-            shotReady = false;
-            gameObject.SetActive(false);
-        }
     }
 
     void Shoot()
@@ -78,7 +71,7 @@ public class Sentry : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        // if the player is within the shooting diameter of the sentry gun, lock onto the player and start shooting
+        // if the player is within the shooting range of the sentry gun, lock onto the player and start shooting
         if (other.tag == "Player")
         {
             target = other.gameObject;
@@ -88,7 +81,7 @@ public class Sentry : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        // stop locking onto the player, stops firing shots and stays idle
+        // stop locking onto the player, stops firing shots and stays idle if player is out of range
         targetLocked = false;
     }
 }
