@@ -22,8 +22,6 @@ public class OpenDoor : MonoBehaviour
     {
         // initialise raycasting to open doors
         RaycastHit result;
-        // delete this later
-        Debug.DrawLine(fpsCam.transform.position, fpsCam.transform.position + fpsCam.transform.forward * interactionDistance);
         // allow raycast to only detect items in Door layer
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out result, interactionDistance, doorMask))
         {

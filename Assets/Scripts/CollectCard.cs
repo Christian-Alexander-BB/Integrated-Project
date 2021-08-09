@@ -32,7 +32,7 @@ public class CollectCard : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     // sets the card to be collected, hides the card and the collect card prompt
-                    uiPrompts.GetComponent<GameManager>().quest2.text = "2. Find and obtain the keycard. (complete)";
+                    uiPrompts.GetComponent<GameManager>().quest2.text = " 2. Find and obtain the keycard. (complete)";
                     cardCollected = true;
                     result.transform.gameObject.SetActive(false);
                     collectCardPrompt.SetActive(false);
