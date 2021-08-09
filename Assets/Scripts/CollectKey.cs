@@ -8,6 +8,7 @@ public class CollectKey : MonoBehaviour
     public LayerMask keyMask;
     public float interactionDistance = 2f;
     public GameObject collectKeyPrompt;
+    public GameObject uiPrompts;
     public bool keyFound = false;
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class CollectKey : MonoBehaviour
                 {
                     // player collects the key
                     keyFound = true;
+                    uiPrompts.GetComponent<GameManager>().quest7.text = " 7 : Find the key for safety deposit box 1179. It is somewhere in the building. (completed)";
                     // hides the key
                     result.transform.gameObject.SetActive(false);
                 }
