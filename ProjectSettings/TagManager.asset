@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Sentry
   - GameMusic
+  - attack
+  - SentryDamage
   - VandalBullet
   layers:
   - Default
