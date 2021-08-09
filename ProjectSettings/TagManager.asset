@@ -9,6 +9,7 @@ TagManager:
   - attack
   - SentryDamage
   - VandalBullet
+  - DroneBullet
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Keypad
   - Computer
   - CardSensor
-  - 
+  - RedDiamond
   - 
   - 
   - 
