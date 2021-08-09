@@ -6,13 +6,9 @@ public class VandalBullet : MonoBehaviour
 {
     public float movementSpeed;
     public float sentryDamage;
-<<<<<<< HEAD
     public float damageToDrone = 20f;
-    public GameObject target;
-=======
     public GameObject target1;
     public GameObject target2;
->>>>>>> 1d74f27e7aeb3bc121d7704aac18873ae7b025a1
 
     // Update is called once per frame
     void Update()
