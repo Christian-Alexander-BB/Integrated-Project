@@ -127,7 +127,6 @@ public class Keypad : MonoBehaviour
             accessDeniedPrompt.SetActive(false);
             if (!codeCorrect)
             {
-                Debug.Log("This if statement is working");
                 tryFlag = true;
             }
 
