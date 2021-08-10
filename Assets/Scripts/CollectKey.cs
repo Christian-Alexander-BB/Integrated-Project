@@ -25,7 +25,7 @@ public class CollectKey : MonoBehaviour
         // allow raycast to only detect objects in the key layer only
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out result, interactionDistance, keyMask))
         {
-            if (result.transform.name == "")
+            if (result.transform.name == "Key_2_lo")
             {
                 // show the collect key prompt
                 collectKeyPrompt.SetActive(true);
@@ -33,7 +33,7 @@ public class CollectKey : MonoBehaviour
                 {
                     // player collects the key
                     keyFound = true;
-                    uiPrompts.GetComponent<GameManager>().quest7.text = " 7 : Find the key for safety deposit box 1179. It is somewhere in the building. (completed)";
+                    uiPrompts.GetComponent<GameManager>().quest7.text = "7. Find the key for safety deposit box 1179. It is somewhere in the building. (completed)";
                     // hides the key
                     result.transform.gameObject.SetActive(false);
                 }

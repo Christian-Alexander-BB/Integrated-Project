@@ -30,7 +30,7 @@ public class CollectRedDiamond : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     diamondCollected = true;
-                    uiPrompts.GetComponent<GameManager>().quest9.text = " 9 : Obtain the Red Diamond. (completed)";
+                    uiPrompts.GetComponent<GameManager>().quest9.text = "9. Obtain the Red Diamond. (completed)";
                     result.transform.gameObject.SetActive(false);
                 }
             }
