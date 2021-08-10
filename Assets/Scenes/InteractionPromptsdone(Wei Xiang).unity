@@ -2572,7 +2572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 445238520}
   m_Layer: 0
-  m_Name: DogFireRight
+  m_Name: DogEyeRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4047,7 +4047,7 @@ GameObject:
   m_Component:
   - component: {fileID: 872216708}
   m_Layer: 0
-  m_Name: DogFireLeft
+  m_Name: DogEyeLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6353,15 +6353,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   interactionDistance: 2
+  enterCode: {fileID: 0}
+  enterCodeHeading: {fileID: 0}
+  okButton: {fileID: 0}
+  crosshair: {fileID: 0}
   uiPrompts: {fileID: 0}
   useCardPrompt: {fileID: 0}
   noCardPrompt: {fileID: 0}
   enterCodePrompt: {fileID: 805122049}
   accessDeniedPrompt: {fileID: 0}
+  vandal: {fileID: 0}
   codeCorrect: 0
   cardScanned: 0
   cardCollected: 0
   tryFlag: 0
+  triedCodeFlag: 0
   openBankVault: {fileID: 0}
 --- !u!114 &1511573046
 MonoBehaviour:
@@ -8055,10 +8061,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1511573039}
-  bulletPrefab: {fileID: 6955663481728670081, guid: 01c50cdf4b4d7d34e8b2b1190e3be7c8, type: 3}
-  dogLeftPos: {fileID: 872216708}
-  dogRightPos: {fileID: 445238520}
-  allowShooting: 1
+  bullet: {fileID: 6955663481728670081, guid: 6cf5d43726923e64ea983c571640ffbe, type: 3}
+  dogLefteye: {fileID: 872216708}
+  dogRighteye: {fileID: 445238520}
 --- !u!1 &2020256398
 GameObject:
   m_ObjectHideFlags: 0

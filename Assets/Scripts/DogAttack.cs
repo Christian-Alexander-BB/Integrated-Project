@@ -6,48 +6,46 @@ using UnityEngine.AI;
 public class DogAttack : MonoBehaviour
 {
 
-    // Initialize NavMesh variables
+    // NavMesh variables
     [SerializeField] Transform target;
-    NavMeshAgent droneAgent;
+    NavMeshAgent dogAgent;
 
-    //Initialize guns and shooting variables
-    [SerializeField] GameObject bulletPrefab;
-    [SerializeField] Transform dogLeftPos;
-    [SerializeField] Transform dogRightPos;
-    [SerializeField] bool allowShooting = true;
+
+    //Variables
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform dogLefteye;
+    [SerializeField] Transform dogRighteye;
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
-        if (allowShooting)
-        {
-            StartCoroutine("Shoot");
-        }
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetTargetPos();
+        GetTargetPosition();
     }
 
-    void GetTargetPos()
+    void GetTargetPosition()
     {
-        droneAgent = GetComponent<NavMeshAgent>();
-        droneAgent.SetDestination(target.position); // Sets the target destination of the NavMeshAgent every frame.
+        dogAgent = GetComponent<NavMeshAgent>();
+        dogAgent.SetDestination(target.position);
     }
 
     IEnumerator Shoot()
     {
         while (true)
         {
-            //Rotates the spawn point of bullets so that they move horizontally instead of vertically when they are spawned.
-            dogLeftPos.transform.localRotation = Quaternion.Euler(90, 0, 0);
+            //Rotation of bullet
+            dogLefteye.transform.localRotation = Quaternion.Euler(90, 0, 0);
 
-            //Spawns bullets at the gun area of the drone.
-            Instantiate(bulletPrefab, dogLeftPos.position, dogLeftPos.transform.rotation);
-            Instantiate(bulletPrefab, dogRightPos.position, dogLeftPos.transform.rotation);
+            //Bullet appear shooting at dog's eyes
+            Instantiate(bullet, dogLefteye.position, dogLefteye.transform.rotation);
+            Instantiate(bullet, dogRighteye.position, dogLefteye.transform.rotation);
 
             yield return new WaitForSeconds(1f);
 

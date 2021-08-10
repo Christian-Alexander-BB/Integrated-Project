@@ -1,21 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Keypad : MonoBehaviour
 {
     public Camera fpsCam;
     public LayerMask keypadMask;
     public float interactionDistance = 2f;
+    public InputField enterCode;
+    public GameObject enterCodeHeading;
+    public GameObject okButton;
+    public GameObject crosshair;
     public GameObject uiPrompts;
     public GameObject useCardPrompt;
     public GameObject noCardPrompt;
     public GameObject enterCodePrompt;
     public GameObject accessDeniedPrompt;
+    public GameObject vandal;
     public bool codeCorrect = false;
     public bool cardScanned = false;
     public bool cardCollected;
     public bool tryFlag = true;
+    public bool triedCodeFlag = false;
+    public bool allowPressFToShow = true;
+    public bool alreadyRun = false;
     public Animator openBankVault;
 
     // Start is called before the first frame update
@@ -28,11 +37,18 @@ public class Keypad : MonoBehaviour
         // hide enter code prompt and access denied prompt first
         enterCodePrompt.SetActive(false);
         accessDeniedPrompt.SetActive(false);
+
+        // hides the ui for entering code first
+        enterCodeHeading.SetActive(false);
+        okButton.SetActive(false);
+        enterCode.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        cardCollected = gameObject.GetComponent<CollectCard>().cardCollected;
+
         RaycastHit result;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out result, interactionDistance, keypadMask))
         {
@@ -40,6 +56,7 @@ public class Keypad : MonoBehaviour
             {
                 if (tryFlag && !cardScanned)
                 {
+                    // show the use card prompt, hide the no card prompt
                     useCardPrompt.SetActive(true);
                     noCardPrompt.SetActive(false);
 
@@ -56,6 +73,7 @@ public class Keypad : MonoBehaviour
 
                         else
                         {
+                            // hides use card prompt, show no card prompt, stops user from trying again
                             useCardPrompt.SetActive(false);
                             noCardPrompt.SetActive(true);
                             tryFlag = false;
@@ -63,57 +81,45 @@ public class Keypad : MonoBehaviour
                     }
                 }
 
-                else if (cardScanned)
+                else if (cardScanned && tryFlag && allowPressFToShow)
                 {
-                    enterCodePrompt.SetActive(true);
-                    accessDeniedPrompt.SetActive(false);
+                        // show enter code prompt ui
+                        enterCodePrompt.SetActive(true);
+                        accessDeniedPrompt.SetActive(false);
+                    
 
                     if (Input.GetKeyDown(KeyCode.F))
                     {
-                        // if the code is correct
-                        codeCorrect = true;
-                        openBankVault.SetBool("allowOpenVault", true);
-                        uiPrompts.GetComponent<GameManager>().quest5.text = "5. Open the vault. (completed)";
+                        // show the cursor in game
+                        Cursor.visible = true;
 
-                        // if the code is wrong
-                        accessDeniedPrompt.SetActive(false);
-                        tryFlag = false;
+                        // hide enter code prompt
+                        enterCodePrompt.SetActive(false);
+
+                        // hide the crosshair to display enter code ui
+                        crosshair.SetActive(false);
+
+                        // stops player movement and navigation
+                        gameObject.GetComponent<PlayerMovement>().enabled = false;
+                        fpsCam.GetComponent<MouseLook>().enabled = false;
+                        vandal.GetComponent<Vandal>().enabled = false;
+
+                        // show ui for entering the code
+                        enterCodeHeading.SetActive(true);
+                        okButton.SetActive(true);
+                        enterCode.gameObject.SetActive(true);
+
+                        //Hide the "Press F To Show" prompt
+                        allowPressFToShow = false;
                     }
                 }
-
-                // will not do anything after the correct code has been entered
-                //if (!codeCorrect && tryFlag)
-                //{
-                    // show enter code prompt and hide access denied prompt if close
-                    //enterCodePrompt.SetActive(true);
-                    //accessDeniedPrompt.SetActive(false);
-                    //if (Input.GetKeyDown(KeyCode.F))
-                    //{
-                        // hide enter code prompt
-                        //enterCodePrompt.SetActive(false);
-
-                        // UI to appear to type in the code
-
-                        // if the code is correct
-                        //codeCorrect = true;
-
-                        // if the code is wrong, show access denied prompt and disallow user to try again until they leave the proximity of the keypad and come back again
-                        //accessDeniedPrompt.SetActive(true);
-                        //tryFlag = false;
-
-                        // open bank vault of keycode is correct and card is scanned
-                        //if (codeCorrect && cardScanned)
-                        //{
-                            // set condition true for bank vault door to open
-                            //openBankVault.SetBool("allowOpenVault", true);
-                        //}
-                //}
-                //}
             }
         }
 
-        else
+        else if (!Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out result, interactionDistance, keypadMask))
         {
+            allowPressFToShow = true;
+
             // if raycast does not detect keypad, hide the enter code prompt and access denied prompt
             useCardPrompt.SetActive(false);
             noCardPrompt.SetActive(false);
@@ -123,8 +129,89 @@ public class Keypad : MonoBehaviour
             {
                 tryFlag = true;
             }
+
         }
 
-        cardCollected = gameObject.GetComponent<CollectCard>().cardCollected;
+        if (codeCorrect && triedCodeFlag)
+        {
+            // hide the cursor in game
+            Cursor.visible = false;
+
+            // hide enter code prompt
+            enterCodePrompt.SetActive(false);
+
+            // hide ui for entering the code
+            enterCodeHeading.SetActive(false);
+            okButton.SetActive(false);
+            enterCode.gameObject.SetActive(false);
+
+            // play the animation for opening the bank vault
+            openBankVault.SetBool("allowOpenVault", true);
+
+            // change quest ui
+            uiPrompts.GetComponent<GameManager>().quest5.text = "5. Open the vault. (completed)";
+
+            // set crosshair to be shown again
+            crosshair.SetActive(true);
+
+            // allow player movement and navigation again
+            gameObject.GetComponent<PlayerMovement>().enabled = true;
+            fpsCam.GetComponent<MouseLook>().enabled = true;
+            vandal.GetComponent<Vandal>().enabled = true;
+
+            // stops user from trying again until they leave
+            tryFlag = false;
+        }
+
+        else if (!codeCorrect && triedCodeFlag && alreadyRun)
+        {
+            // hide the cursor in game
+            Cursor.visible = false;
+
+            // hide ui for entering the code
+            enterCodeHeading.SetActive(false);
+            okButton.SetActive(false);
+            enterCode.gameObject.SetActive(false);
+
+            // set crosshair to be shown again
+            crosshair.SetActive(true);
+
+            // show access denied prompt and hide enter code prompt
+            accessDeniedPrompt.SetActive(true);
+            enterCodePrompt.SetActive(false);
+
+            // resets the input box
+            enterCode.GetComponent<InputField>().text = "";
+
+            // allow player movement and navigation again
+            gameObject.GetComponent<PlayerMovement>().enabled = true;
+            fpsCam.GetComponent<MouseLook>().enabled = true;
+            vandal.GetComponent<Vandal>().enabled = true;
+
+            alreadyRun = false;
+        }
+
+
+    }
+
+    public void checkCodeCorrect()
+    {
+        uiPrompts.GetComponent<GameManager>().quest4.text = "4. Use keycard and enter code. (completed)";
+
+        if (enterCode.GetComponent<InputField>().text == "175349")
+        {
+            codeCorrect = true;
+            triedCodeFlag = true;
+        }
+
+        else
+        {
+            codeCorrect = false;
+            triedCodeFlag = true;
+            alreadyRun = true;
+
+            // stops user from trying again until they leave
+            tryFlag = false;
+        }
     }
 }
