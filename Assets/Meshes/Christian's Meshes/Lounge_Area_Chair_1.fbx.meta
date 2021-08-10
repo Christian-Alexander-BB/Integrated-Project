@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 4848f7b3ae074604ba04bb753e17fafb
+guid: 7b15e638d4207db498c87126d4bcd7cb
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phongE1
+    second: {fileID: 2100000, guid: de6003c58f1158647b0767d08dec3b5d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

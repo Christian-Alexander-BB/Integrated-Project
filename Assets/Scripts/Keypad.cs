@@ -73,7 +73,7 @@ public class Keypad : MonoBehaviour
                         // if the code is correct
                         codeCorrect = true;
                         openBankVault.SetBool("allowOpenVault", true);
-                        uiPrompts.GetComponent<GameManager>().quest5.text = " 5 : Open the vault. (completed)";
+                        uiPrompts.GetComponent<GameManager>().quest5.text = "5. Open the vault. (completed)";
 
                         // if the code is wrong
                         accessDeniedPrompt.SetActive(false);
