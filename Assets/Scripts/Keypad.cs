@@ -197,6 +197,8 @@ public class Keypad : MonoBehaviour
 
     public void checkCodeCorrect()
     {
+        uiPrompts.GetComponent<GameManager>().quest4.text = "4. Use keycard and enter code. (completed)";
+
         if (enterCode.GetComponent<InputField>().text == "175349")
         {
             codeCorrect = true;
