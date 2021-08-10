@@ -6,11 +6,12 @@ using UnityEngine.AI;
 public class DogAttack : MonoBehaviour
 {
 
-    // Initialize NavMesh variables
+    // NavMesh variables
     [SerializeField] Transform target;
     NavMeshAgent droneAgent;
 
-    //Initialize guns and shooting variables
+
+    //Variables
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform dogLeftPos;
     [SerializeField] Transform dogRightPos;
@@ -35,17 +36,17 @@ public class DogAttack : MonoBehaviour
     void GetTargetPos()
     {
         droneAgent = GetComponent<NavMeshAgent>();
-        droneAgent.SetDestination(target.position); // Sets the target destination of the NavMeshAgent every frame.
+        droneAgent.SetDestination(target.position); 
     }
 
     IEnumerator Shoot()
     {
         while (true)
         {
-            //Rotates the spawn point of bullets so that they move horizontally instead of vertically when they are spawned.
+            //Rotation of bullet
             dogLeftPos.transform.localRotation = Quaternion.Euler(90, 0, 0);
 
-            //Spawns bullets at the gun area of the drone.
+            //Bullet appear shooting at dog's eyes
             Instantiate(bulletPrefab, dogLeftPos.position, dogLeftPos.transform.rotation);
             Instantiate(bulletPrefab, dogRightPos.position, dogLeftPos.transform.rotation);
 

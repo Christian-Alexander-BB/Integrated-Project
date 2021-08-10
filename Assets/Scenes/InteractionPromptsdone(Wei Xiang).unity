@@ -8055,7 +8055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1511573039}
-  bulletPrefab: {fileID: 6955663481728670081, guid: 01c50cdf4b4d7d34e8b2b1190e3be7c8, type: 3}
+  bulletPrefab: {fileID: 6955663481728670081, guid: 6cf5d43726923e64ea983c571640ffbe, type: 3}
   dogLeftPos: {fileID: 872216708}
   dogRightPos: {fileID: 445238520}
   allowShooting: 1
