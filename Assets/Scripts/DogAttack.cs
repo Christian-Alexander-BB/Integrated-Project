@@ -36,7 +36,7 @@ public class DogAttack : MonoBehaviour
     void GetTargetPos()
     {
         droneAgent = GetComponent<NavMeshAgent>();
-        droneAgent.SetDestination(target.position); 
+        droneAgent.SetDestination(target.position);
     }
 
     IEnumerator Shoot()
