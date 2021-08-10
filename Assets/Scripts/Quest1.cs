@@ -5,6 +5,7 @@ using UnityEngine;
 public class Quest1 : MonoBehaviour
 {
     public GameObject uiPrompts;
+    public bool task1 = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class Quest1 : MonoBehaviour
         if (other.tag == "Player")
         {
             uiPrompts.GetComponent<GameManager>().quest1.text = "1. Find the bank vault. (complete)";
+            task1 = true;
         }
     }
 }

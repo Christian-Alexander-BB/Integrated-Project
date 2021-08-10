@@ -45,18 +45,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //ammo = GetComponent<Vandal>().ammo;
-
-        //on start the game set the int/float to respective 
-
-        health = 100;
-        ammoleft = 20;
-        
-        //find the game object
-        //playerHealthtxt = GameObject.Find("playerHealthtxt").GetComponent<Text>();
-        
-
-
         //set the text to respective text 
         quest1.text = "1. Find the bank vault.";
         quest2.text = "2. Find and obtain the keycard.";
@@ -83,40 +71,6 @@ public class GameManager : MonoBehaviour
         playerHealthtxt.text = " Health: " + playerHealth;
         Ammotxt.text = " Ammo: " + ammo;
         Cashtxt.text = " Cash: " + cash + " / 1000";
-        playerdeath();
-
-
-        //check if ammo is left than 0 and set the ammo to 0
-        if (ammoleft <= 0)
-        {
-            ammoleft = 0;
-        }
-       
-        //check if keycard is found
-       // if (CardSensor >= 1)
-        //{
-          //  quest2.text = "2 : Find and obtain the keycard ( complete)";
-            
-        //}
-
-         
-
+        
     }
-
-
-
-    void playerdeath()
-    {
-        //set text to zero less than zero
-
-        if (health <= 0)
-        {
-            health = 0;
-
-            //load the scene
-            SceneManager.LoadScene("Gameover");
-        }
-
-    }
-
 }

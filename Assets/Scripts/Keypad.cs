@@ -26,6 +26,8 @@ public class Keypad : MonoBehaviour
     public bool allowPressFToShow = true;
     public bool alreadyRun = false;
     public Animator openBankVault;
+    public bool task4 = false;
+    public bool task5 = false;
 
     // Start is called before the first frame update
     void Start()
@@ -150,6 +152,7 @@ public class Keypad : MonoBehaviour
 
             // change quest ui
             uiPrompts.GetComponent<GameManager>().quest5.text = "5. Open the vault. (completed)";
+            task5 = true;
 
             // set crosshair to be shown again
             crosshair.SetActive(true);
@@ -197,6 +200,7 @@ public class Keypad : MonoBehaviour
     public void checkCodeCorrect()
     {
         uiPrompts.GetComponent<GameManager>().quest4.text = "4. Use keycard and enter code. (completed)";
+        task4 = true;
 
         if (enterCode.GetComponent<InputField>().text == "175349")
         {

@@ -11,6 +11,7 @@ public class HackComputer : MonoBehaviour
     public GameObject uiPrompts;
     public GameObject hackPrompt;
     public GameObject code;
+    public bool task3 = false;
     public string digit1 = "_ ";
     public string digit2 = "_ ";
     public string digit3 = "_ ";
@@ -175,6 +176,7 @@ public class HackComputer : MonoBehaviour
         if (!tryFlag1 && !tryFlag2 && !tryFlag3 && !tryFlag4 && !tryFlag5 && !tryFlag6)
         {
             uiPrompts.GetComponent<GameManager>().quest3.text = " 3 : Find all digits of the code. (completed)";
+            task3 = true;
         }
 
     }
