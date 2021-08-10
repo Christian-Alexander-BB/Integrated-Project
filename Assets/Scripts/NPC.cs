@@ -20,6 +20,8 @@ public class NPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        cardCollected = gameObject.GetComponent<CollectCard>().cardCollected;
+
         // initialise raycasting to detect the key
         RaycastHit result;
         // allow raycast to only detect objects in the key layer only
