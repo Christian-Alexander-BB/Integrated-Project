@@ -23,6 +23,8 @@ public class Keypad : MonoBehaviour
     public bool cardCollected;
     public bool tryFlag = true;
     public bool triedCodeFlag = false;
+    public bool allowPressFToShow = true;
+    public bool alreadyRun = false;
     public Animator openBankVault;
 
     // Start is called before the first frame update
@@ -79,14 +81,12 @@ public class Keypad : MonoBehaviour
                     }
                 }
 
-                else if (cardScanned && tryFlag)
+                else if (cardScanned && tryFlag && allowPressFToShow)
                 {
-                    if (tryFlag)
-                    {
                         // show enter code prompt ui
                         enterCodePrompt.SetActive(true);
                         accessDeniedPrompt.SetActive(false);
-                    }
+                    
 
                     if (Input.GetKeyDown(KeyCode.F))
                     {
@@ -108,6 +108,9 @@ public class Keypad : MonoBehaviour
                         enterCodeHeading.SetActive(true);
                         okButton.SetActive(true);
                         enterCode.gameObject.SetActive(true);
+
+                        //Hide the "Press F To Show" prompt
+                        allowPressFToShow = false;
                     }
                 }
             }
@@ -115,6 +118,8 @@ public class Keypad : MonoBehaviour
 
         else if (!Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out result, interactionDistance, keypadMask))
         {
+            allowPressFToShow = true;
+
             // if raycast does not detect keypad, hide the enter code prompt and access denied prompt
             useCardPrompt.SetActive(false);
             noCardPrompt.SetActive(false);
@@ -122,8 +127,10 @@ public class Keypad : MonoBehaviour
             accessDeniedPrompt.SetActive(false);
             if (!codeCorrect)
             {
+                Debug.Log("This if statement is working");
                 tryFlag = true;
             }
+
         }
 
         if (codeCorrect && triedCodeFlag)
@@ -157,7 +164,7 @@ public class Keypad : MonoBehaviour
             tryFlag = false;
         }
 
-        else if (!codeCorrect && triedCodeFlag)
+        else if (!codeCorrect && triedCodeFlag && alreadyRun)
         {
             // hide the cursor in game
             Cursor.visible = false;
@@ -182,8 +189,7 @@ public class Keypad : MonoBehaviour
             fpsCam.GetComponent<MouseLook>().enabled = true;
             vandal.GetComponent<Vandal>().enabled = true;
 
-            // stops user from trying again until they leave
-            tryFlag = false;
+            alreadyRun = false;
         }
 
 
@@ -201,6 +207,10 @@ public class Keypad : MonoBehaviour
         {
             codeCorrect = false;
             triedCodeFlag = true;
+            alreadyRun = true;
+
+            // stops user from trying again until they leave
+            tryFlag = false;
         }
     }
 }
