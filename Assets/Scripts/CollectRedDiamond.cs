@@ -10,6 +10,7 @@ public class CollectRedDiamond : MonoBehaviour
     public GameObject uiPrompts;
     public GameObject collectDiamondPrompt;
     public bool diamondCollected = false;
+    public bool task9 = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class CollectRedDiamond : MonoBehaviour
                 {
                     diamondCollected = true;
                     uiPrompts.GetComponent<GameManager>().quest9.text = "9. Obtain the Red Diamond. (completed)";
+                    task9 = true;
                     result.transform.gameObject.SetActive(false);
                 }
             }

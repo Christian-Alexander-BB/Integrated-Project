@@ -11,10 +11,13 @@ public class OpenDepBox : MonoBehaviour
     public GameObject openDepBoxPrompt;
     public GameObject needKeyPrompt;
     public GameObject uiPrompts;
+    public GameObject redDiamond;
     public int cash;
     public bool keyFound;
     public bool tryFlag = true;
     public bool interactedFlag = false;
+    public bool task6 = false;
+    public bool task8 = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,7 @@ public class OpenDepBox : MonoBehaviour
         // hide the open deposit box prompt and need key prompt first
         openDepBoxPrompt.SetActive(false);
         needKeyPrompt.SetActive(false);
+        redDiamond.SetActive(false);
     }
 
     // Update is called once per frame
@@ -59,6 +63,12 @@ public class OpenDepBox : MonoBehaviour
 
                     if (Input.GetKeyDown(KeyCode.E))
                     {
+                        // boolean to check if player has interacted with the deposit box
+                        interactedFlag = true;
+
+                        // make the red diamond appear
+                        redDiamond.SetActive(true);
+
                         // hides open deposit box prompt
                         openDepBoxPrompt.SetActive(false);
 
@@ -68,6 +78,7 @@ public class OpenDepBox : MonoBehaviour
 
                         // update quest ui
                         uiPrompts.GetComponent<GameManager>().quest8.text = "8. Return to the vault. Open safety deposit box 1179. (complete)";
+                        task8 = true;
 
                         // player cannnot interact with the safety deposit box anymore
                         tryFlag = false;
@@ -96,6 +107,7 @@ public class OpenDepBox : MonoBehaviour
         if (cash >= 1000 && interactedFlag)
         {
             uiPrompts.GetComponent<GameManager>().quest6.text = "6. Get the cash and interact with safety deposit box 1179. (completed)";
+            task6 = true;
         }
     }
 }
