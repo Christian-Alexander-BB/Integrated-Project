@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class Vandal : MonoBehaviour
 {
+    // audio for the gun when shooting
     private AudioSource gunShot;
+    // bullet for the vandal
     public GameObject vandalBullet;
+    // spawn point of the bullet
     public GameObject vandalBulletSpawnPoint;
+    // reference to the player
     public GameObject player;
+    // vfx for muzzle flash
     public ParticleSystem muzzleFlash;
+    // amount of bullets
     public int ammo;
+    
+    // cooldown between each shot
     public float fireTimer;
     private bool shotReady;
 

@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class CollectCard : MonoBehaviour
 {
+    // camera for fps player
     public Camera fpsCam;
+    // set a layermask for the card
     public LayerMask cardMask;
+    // set interaction distance
     public float interactionDistance = 2f;
+    // collect card prompt
     public GameObject collectCardPrompt;
+    // bool to check if card is collected
     public bool cardCollected = false;
+    // refer to quest ui to change text
     public GameObject uiPrompts;
+    // check if the task is done for escaping the bank
     public bool task2 = false;
 
     // Start is called before the first frame update
@@ -24,6 +31,7 @@ public class CollectCard : MonoBehaviour
     {
         // use raycasting to detect the card in the card layer
         RaycastHit result;
+        // allow raycast to only detect objects in the card layer
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out result, interactionDistance, cardMask))
         {
             if (result.transform.name == "weixiang_card")
@@ -32,8 +40,9 @@ public class CollectCard : MonoBehaviour
                 collectCardPrompt.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    // sets the card to be collected, hides the card and the collect card prompt
+                    // update quest ui
                     uiPrompts.GetComponent<GameManager>().quest2.text = "2. Find and obtain the keycard. (completed)";
+                    // task is completed for escaping
                     task2 = true;
                     // card has been collected, hides the card and the collect card prompt
                     cardCollected = true;
