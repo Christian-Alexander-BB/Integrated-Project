@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class VandalBullet : MonoBehaviour
 {
+    // speed of the bullet
     public float movementSpeed;
+    // damage of the bullet to the sentry guns
     public float sentryDamage;
+    // damage of the bullet to the drones
     public float damageToDrone = 20f;
+
+    // sentry gun (targets)
     public GameObject target1;
     public GameObject target2;
 
@@ -37,7 +42,5 @@ public class VandalBullet : MonoBehaviour
             }
             
         }
-
-        Debug.Log("The Bullet Hit: " + other.gameObject.name);
     }
 }

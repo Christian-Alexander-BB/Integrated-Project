@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class CollectAmmo : MonoBehaviour
 {
+    // camera for fps player
     public Camera fpsCam;
+    // set a layermask for the ammo
     public LayerMask ammoMask;
+    // set interaction distance
     public float interactionDistance = 2f;
+    // collect ammo prompt
     public GameObject collectAmmoPrompt;
 
+    // number of bullets
     public int ammo = 10;
+    // reference to the gun
     public GameObject vandal;
 
     // Start is called before the first frame update
