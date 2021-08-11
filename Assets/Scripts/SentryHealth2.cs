@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SentryHealth2 : MonoBehaviour
 {
+    // reference to the first person player
+    public GameObject player;
+
     // health of sentry2
     public float sentryHealth2 = 50;
     // ammo that will drop after sentry is destroyed
@@ -21,6 +24,9 @@ public class SentryHealth2 : MonoBehaviour
     {
         if (sentryHealth2 <= 0)
         {
+            // continue player health regen
+            player.GetComponent<PlayerHealth>().notTakingDamage = true;
+
             // destroy the sentry gun
             Destroy(gameObject);
             // drops the ammo after destroying the sentry gun
