@@ -10,6 +10,8 @@ TagManager:
   - SentryDamage
   - VandalBullet
   - DroneBullet
+  - PatrolPoint
+  - TestDetection
   layers:
   - Default
   - TransparentFX

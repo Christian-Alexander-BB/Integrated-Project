@@ -6,11 +6,11 @@ public class EnemyHealth : MonoBehaviour
 {
     public float health = 100;
     public float assaultRifledamage;
-    public GameObject assaultRifle;
+    public GameObject assaultRifleBullet;
 
     void Start()
     {
-        assaultRifledamage = assaultRifle.GetComponent<VandalBullet>().damageToDrone; 
+        assaultRifledamage = assaultRifleBullet.GetComponent<VandalBullet>().damageToDrone; 
     }
 
     private void OnTriggerEnter(Collider hit)
