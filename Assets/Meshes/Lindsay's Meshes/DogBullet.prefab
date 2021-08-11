@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -9011972233890346356}
   - component: {fileID: 2954515887156129169}
   m_Layer: 0
-  m_Name: Bullet 1
+  m_Name: DogBullet
   m_TagString: DroneBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6955663481728670081}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
