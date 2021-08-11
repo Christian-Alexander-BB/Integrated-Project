@@ -15,6 +15,10 @@ public class VandalBullet : MonoBehaviour
     public GameObject target1;
     public GameObject target2;
 
+    // vfx for damage to the sentry
+    public ParticleSystem damageEffect1;
+    public ParticleSystem damageEffect2;
+
     // Update is called once per frame
     void Update()
     {
@@ -30,6 +34,7 @@ public class VandalBullet : MonoBehaviour
             // health system for sentry 1
             if (other.gameObject.name == "damageTaker1")
             {
+                damageEffect1.Play();
                 target1.GetComponent<SentryHealth1>().sentryHealth1 -= sentryDamage;
                 Destroy(gameObject);
             }
@@ -37,6 +42,7 @@ public class VandalBullet : MonoBehaviour
             // health system for sentry 2
             if (other.gameObject.name == "damageTaker2")
             {
+                damageEffect2.Play();
                 target2.GetComponent<SentryHealth2>().sentryHealth2 -= sentryDamage;
                 Destroy(gameObject);
             }
