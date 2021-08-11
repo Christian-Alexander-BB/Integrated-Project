@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class Sentry : MonoBehaviour
 {
+    // set the target to player
     private GameObject target;
+    // check if the sentry has a target
     public bool targetLocked;
+
+    // animation for sentry shooting
     public Animator sentryRotation;
 
+    // refer to the part that will rotate around
     public GameObject sentryTopPart;
+    // refer to the spawn point of the bullet
     public GameObject bulletSpawnPoint;
+    // refer to the bullet that will be shot
     public GameObject bullet;
+
+    // set a cooldown between each shot
     public float fireTimer;
     private bool shotReady;
 
@@ -39,7 +48,7 @@ public class Sentry : MonoBehaviour
             }
         }
 
-        // stops the animation of the sentry gun if no target is detected
+        // stops the animation of the sentry shooting if no target is detected
         else if (targetLocked == false)
         {
             sentryRotation.SetBool("sentryActive", false);

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class SentryHealth1 : MonoBehaviour
 {
+    // health of sentry1
     public float sentryHealth1 = 50;
+    // ammo that will drop after sentry is destroyed
     public GameObject ammo1;
 
     // Start is called before the first frame update
