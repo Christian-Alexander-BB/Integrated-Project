@@ -13,26 +13,28 @@ public class DogFollowPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _navMeshAgent = this.GetComponent<NavMeshAgent>();
+        _navMeshAgent = GetComponent<NavMeshAgent>();
 
         if (_navMeshAgent == null)
         {
+            // show error if nav mesh agent is not attacked
             Debug.LogError("The nav mesh agent component is not attached to " + gameObject.name);
         }
 
         else
         {
-            SetDestination();
+            GetPlayerPos();
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        _navMeshAgent.SetDestination(_destination.position); 
+        GetPlayerPos(); 
     }
 
-    void SetDestination()
+    // get the position of the destination
+    void GetPlayerPos()
     {
         if (_destination != null)
         {
