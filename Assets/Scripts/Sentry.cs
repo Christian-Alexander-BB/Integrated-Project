@@ -5,7 +5,7 @@ using UnityEngine;
 public class Sentry : MonoBehaviour
 {
     // set the target to player
-    private GameObject target;
+    public GameObject target;
     // check if the sentry has a target
     public bool targetLocked;
 
@@ -52,6 +52,8 @@ public class Sentry : MonoBehaviour
         else if (targetLocked == false)
         {
             sentryRotation.SetBool("sentryActive", false);
+            // continue player health regen
+            target.GetComponent<PlayerHealth>().notTakingDamage = true;
         }
 
     }
