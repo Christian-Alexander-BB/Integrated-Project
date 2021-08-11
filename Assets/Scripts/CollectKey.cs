@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class CollectKey : MonoBehaviour
 {
+    // camera for fps player
     public Camera fpsCam;
+    // set a layermask for the key
     public LayerMask keyMask;
+    // set interaction distance
     public float interactionDistance = 2f;
+    // collect key prompt
     public GameObject collectKeyPrompt;
+    // refer to quest ui to change text
     public GameObject uiPrompts;
+    // check if key has been found
     public bool keyFound = false;
+    // check if the task is done for escaping the bank
+    public bool task7 = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +42,10 @@ public class CollectKey : MonoBehaviour
                 {
                     // player collects the key
                     keyFound = true;
+                    // update quest ui
                     uiPrompts.GetComponent<GameManager>().quest7.text = "7. Find the key for safety deposit box 1179. It is somewhere in the building. (completed)";
+                    // task is completed for escaping
+                    task7 = true;
                     // hides the key
                     result.transform.gameObject.SetActive(false);
                 }

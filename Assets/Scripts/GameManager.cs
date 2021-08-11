@@ -45,28 +45,16 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //ammo = GetComponent<Vandal>().ammo;
-
-        //on start the game set the int/float to respective 
-
-        health = 100;
-        ammoleft = 20;
-        
-        //find the game object
-        //playerHealthtxt = GameObject.Find("playerHealthtxt").GetComponent<Text>();
-        
-
-
         //set the text to respective text 
-        quest1.text = " 1. Find the bank vault.";
-        quest2.text = " 2. Find and obtain the keycard.";
-        quest3.text = " 3. Find all digits of the code.";
-        quest4.text = " 4. Use keycard and enter code.";
-        quest5.text = " 5. Open the vault.";
-        quest6.text = " 6. Get the cash and interact with safety deposit box 1179.";
-        quest7.text = " 7. Find the key for safety deposit box 1179. It is somewhere in the building.";
-        quest8.text = " 8. Return to the vault. Open safety deposit box 1179.";
-        quest9.text = " 9. Obtain the Red Diamond.";
+        quest1.text = "1. Find the bank vault.";
+        quest2.text = "2. Find and obtain the keycard.";
+        quest3.text = "3. Find all digits of the code.";
+        quest4.text = "4. Use keycard and enter code.";
+        quest5.text = "5. Open the vault.";
+        quest6.text = "6. Get the cash and interact with safety deposit box 1179.";
+        quest7.text = "7. Find the key for safety deposit box 1179. It is somewhere in the building.";
+        quest8.text = "8. Return to the vault. Open safety deposit box 1179.";
+        quest9.text = "9. Obtain the Red Diamond.";
         quest10.text = "10. Escape";
 
     }
@@ -83,40 +71,6 @@ public class GameManager : MonoBehaviour
         playerHealthtxt.text = " Health: " + playerHealth;
         Ammotxt.text = " Ammo: " + ammo;
         Cashtxt.text = " Cash: " + cash + " / 1000";
-        playerdeath();
-
-
-        //check if ammo is left than 0 and set the ammo to 0
-        if (ammoleft <= 0)
-        {
-            ammoleft = 0;
-        }
-       
-        //check if keycard is found
-       // if (CardSensor >= 1)
-        //{
-          //  quest2.text = "2 : Find and obtain the keycard ( complete)";
-            
-        //}
-
-         
-
+        
     }
-
-
-
-    void playerdeath()
-    {
-        //set text to zero less than zero
-
-        if (health <= 0)
-        {
-            health = 0;
-
-            //load the scene
-            SceneManager.LoadScene("Gameover");
-        }
-
-    }
-
 }

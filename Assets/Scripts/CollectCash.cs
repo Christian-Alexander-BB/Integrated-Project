@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class CollectCash : MonoBehaviour
 {
+    // camera for fps player
     public Camera fpsCam;
+    // set a layermask for the cash
     public LayerMask cashMask;
+    // set interaction distance
     public float interactionDistance = 2f;
+    // collect cash prompt
     public GameObject collectCashPrompt;
+    // amount of cash collected
     public int cash;
+    // whether 1000 dollars has been collected
     public bool cashCollected = false;
 
     // Start is called before the first frame update
@@ -21,7 +27,9 @@ public class CollectCash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // initialise raycasting to detect cash
         RaycastHit result;
+        // allow raycast to only detect objects in the cash layer
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out result, interactionDistance, cashMask))
         {
             if (result.transform.name == "Cash_2_lo")
