@@ -26,8 +26,8 @@ public class SentryHealth1 : MonoBehaviour
             // continue player health regen
             player.GetComponent<PlayerHealth>().notTakingDamage = true;
 
-            // destroy the sentry gun
-            Destroy(gameObject);
+            // hide the sentry gun
+            gameObject.SetActive(false);
             // drops the ammo after destroying the sentry gun
             ammo1.SetActive(true);
         }
