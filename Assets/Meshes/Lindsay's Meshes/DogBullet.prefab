@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -9011972233890346356}
   - component: {fileID: 2954515887156129169}
   m_Layer: 0
-  m_Name: DogBullet
+  m_Name: Bullet 1
   m_TagString: DroneBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

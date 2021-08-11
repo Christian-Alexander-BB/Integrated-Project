@@ -15,13 +15,13 @@ public class DogAttack : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] Transform dogLefteye;
     [SerializeField] Transform dogRighteye;
-    
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
