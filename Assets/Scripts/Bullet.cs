@@ -12,12 +12,19 @@ public class Bullet : MonoBehaviour
     public float damage;
     // player
     public GameObject target;
+    // timer
+    public float timer;
 
     // Update is called once per frame
     void Update()
     {
         // movement for the bullet
         transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
+
+        if (!target.GetComponent<PlayerHealth>().notTakingDamage)
+        {
+            timer += Time.deltaTime;
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -31,6 +38,11 @@ public class Bullet : MonoBehaviour
             // stops player health regen
             target.GetComponent<PlayerHealth>().notTakingDamage = false;
             redScreen.SetActive(true);
+            // 
+            if (timer >= 1f)
+            {
+                target.GetComponent<PlayerHealth>().notTakingDamage = true;
+            }
             Destroy(gameObject);
         }
     }
