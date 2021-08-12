@@ -12,12 +12,20 @@ public class Bullet : MonoBehaviour
     public float damage;
     // player
     public GameObject target;
+    // timer
+    public float timer;
 
     // Update is called once per frame
     void Update()
     {
         // movement for the bullet
         transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
+
+        // check if the player is still taking damage
+        if (target.GetComponent<PlayerHealth>().timer3 <= 2f)
+        {
+            target.GetComponent<PlayerHealth>().timer3 += Time.deltaTime;
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -26,10 +34,13 @@ public class Bullet : MonoBehaviour
         if (other.tag == "Player")
         {
             target = other.gameObject;
+            // stops the timer that detects whether they player has stopped taking damage
+            target.GetComponent<PlayerHealth>().timer3 = 0;
             // player takes damage
             target.GetComponent<PlayerHealth>().health -= damage;
             // stops player health regen
             target.GetComponent<PlayerHealth>().notTakingDamage = false;
+            // takes damage panel
             redScreen.SetActive(true);
             Destroy(gameObject);
         }

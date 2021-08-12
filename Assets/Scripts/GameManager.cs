@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         quest7.text = "7. Find the key for safety deposit box 1179. It is somewhere in the building.";
         quest8.text = "8. Return to the vault. Open safety deposit box 1179.";
         quest9.text = "9. Obtain the Red Diamond.";
-        quest10.text = "10. Escape";
+        quest10.text = "10. Escape.";
 
     }
 
