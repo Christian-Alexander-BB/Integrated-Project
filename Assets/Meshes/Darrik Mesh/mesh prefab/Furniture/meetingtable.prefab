@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6046130497511769000}
   - component: {fileID: 7226008225212484621}
   - component: {fileID: 4873747450730887367}
+  - component: {fileID: 1457297289356755700}
   m_Layer: 0
   m_Name: meetingtable
   m_TagString: Untagged
@@ -82,3 +83,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1457297289356755700
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6387224724483086610}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5719495787224582497, guid: cb73112772db017448afcf45bf62c9e9, type: 3}
