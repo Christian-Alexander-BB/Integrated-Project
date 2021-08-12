@@ -24,8 +24,6 @@ public class NPC : MonoBehaviour
     public GameObject task5text;
     public GameObject task7text;
     public GameObject idletext;
-    public int count = 0;
-
 
     // Start is called before the first frame update
     void Start()
@@ -73,7 +71,6 @@ public class NPC : MonoBehaviour
                         task7text.SetActive(true);
                     }
                 }
-                
             }
         }
 
@@ -82,6 +79,7 @@ public class NPC : MonoBehaviour
             // hides collect key prompt if player is out of range
             npcPrompt.SetActive(false);
         }
+
         task1 = task1Trigger.GetComponent<Quest1>().task1;
         task2 = gameObject.GetComponent<CollectCard>().task2;
         task3 = gameObject.GetComponent<HackComputer>().task3;
