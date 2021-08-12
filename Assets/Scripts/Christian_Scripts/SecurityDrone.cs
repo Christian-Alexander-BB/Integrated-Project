@@ -7,12 +7,16 @@ public class SecurityDrone : MonoBehaviour
 {
     // Initialize NavMesh and patrolling variables
     [SerializeField] List<Transform> patrolPoints;
+    [SerializeField] bool knowPlayerLoc = false;
 
     int numOfPatrolPoints;
     int newPatrolPointChosen;
     int currentPatrolPointInt = 0; // The NavMeshAgent will go to patrolPoints[0] first
     bool allowPickNewPatrolPoint = true;
+    float timeStayedInPatrolPoint;
+    bool runOnceAlready = false;
 
+    [HideInInspector] public bool allowPatrol = true;
     [HideInInspector] public NavMeshAgent droneAgent; // HideInInspector prevents "droneAgent variable set to none" error in the inspector
 
     public Transform target;
@@ -23,19 +27,18 @@ public class SecurityDrone : MonoBehaviour
     [SerializeField] Transform gunLeftPos;
     [SerializeField] Transform gunRightPos;
     [SerializeField] float timeBetweenShots = 1f;
+    [SerializeField] GameObject droneBullets;
 
     public bool allowShooting;
+    public bool stopShooting = false;
 
     //Initialize drone health and damage taken variables
     [SerializeField] float health = 100f;
     [SerializeField] GameObject assaultRifleBullet;
     float vandalDamage = 20f;
 
-    //Light source controls
-    [SerializeField] Light spotLight;
+    //Debug variables
 
-    Color spotLightColorDefault = Color.white;
-    Color spotLightColorPlayerDetected = Color.red;
 
     private void Awake()
     {
@@ -48,34 +51,37 @@ public class SecurityDrone : MonoBehaviour
     }
     void Update()
     {
-        if(playerInRange && allowShooting)
+        if (playerInRange && allowShooting)
         {
-                // Shoot function only gets called once each time the player is detected. The while loop in Shoot() constantly shoots the player until the player leaves 
-                Shoot();
-                allowShooting = false;
-        }
-
-        else
-        {
-            allowShooting = true;
+            //Debug.Log("Player in range? " + playerInRange + ", Allow shooting? " + allowShooting);
+            // Shoot function only gets called once each time the player is detected. The while loop in Shoot() constantly shoots the player until the player leaves 
+            StartCoroutine("Shoot");
+            allowShooting = false;
         }
     }
 
     IEnumerator Shoot()
     {
-        while (true)
+        while (!stopShooting)
         {
-            //Rotates the spawn point of bullets so that they move horizontally instead of vertically when they are spawned.
-            gunLeftPos.transform.localRotation = Quaternion.Euler(90, 0, 0);
+            //Rotates the spawn point of bullets so that they point towards the player.
+            droneBullets.GetComponent<DroneBullets>().target = target;
+            //gunLeftPos.transform.localRotation = Quaternion.Euler(90, 0, 0);
 
-            //Spawns bullets at the gun area of the drone.
-            Instantiate(bulletPrefab, gunLeftPos.position, gunLeftPos.transform.rotation);
-            Instantiate(bulletPrefab, gunRightPos.position, gunLeftPos.transform.rotation);
+            //Spawns bullets at the left gun area of the drone.
+            Instantiate(bulletPrefab, gunLeftPos.position, gunLeftPos.rotation);
 
             //Wait timeBetweenShots number of seconds before shooting again
             yield return new WaitForSeconds(timeBetweenShots);
 
+            //Spawns bullets at the right gun area of the drone
+            Instantiate(bulletPrefab, gunRightPos.position, gunLeftPos.rotation);
+
+            yield return new WaitForSeconds(timeBetweenShots);
+
         }
+
+        stopShooting = false;
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -87,16 +93,43 @@ public class SecurityDrone : MonoBehaviour
         }
 
         // Move to a new patrolpoint
-        else if(collision.gameObject.tag == "PatrolPoint" && !playerInRange)
+        else if(collision.gameObject.tag == "PatrolPoint" && !playerInRange && allowPatrol)
         {
+            timeStayedInPatrolPoint = Time.time;
             MoveToNewPatrolPoint();
         }
     }
 
+    private void OnTriggerStay(Collider collision)
+    {
+        if(Time.time - timeStayedInPatrolPoint > 2f && allowPatrol)
+        {
+            SetDestinationToCurrentPatrolPoint();
+        }
+
+        else if(Time.time - timeStayedInPatrolPoint > 4f && allowPatrol)
+        {
+            Debug.Log("It should change patrol location.");
+            if (!runOnceAlready)
+            {
+                PickNewPatrolPoint();
+            }
+
+            runOnceAlready = true;
+            SetDestinationToCurrentPatrolPoint();
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        runOnceAlready = false;
+    }
+
     public void MoveToNewPatrolPoint()
     {
-        // Moves the NavMeshAgent
-        droneAgent.SetDestination(patrolPoints[currentPatrolPointInt].position);
+
+        // Moves the NavMeshAgent to the existing patrol point
+        SetDestinationToCurrentPatrolPoint();
 
         // Sets a random patrol point for the next target of the NavMeshAgent
         PickNewPatrolPoint();
@@ -130,5 +163,11 @@ public class SecurityDrone : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void SetDestinationToCurrentPatrolPoint()
+    {
+        // Changes the destination of the NavMeshAgent to the new patrol point
+        droneAgent.SetDestination(patrolPoints[currentPatrolPointInt].position);
     }
 }

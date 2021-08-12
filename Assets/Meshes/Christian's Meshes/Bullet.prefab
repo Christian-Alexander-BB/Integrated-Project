@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2840012028879169516}
   - component: {fileID: -9011972233890346356}
   - component: {fileID: 2954515887156129169}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Bullet
   m_TagString: DroneBullet
   m_Icon: {fileID: 0}
@@ -129,4 +129,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 50
   bulletDespawnTimeSeconds: 5
-  bulletDamage: 20
+  bulletDamage: 5
+  target: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2043346152265613667}
   - component: {fileID: -118943856773076993}
   - component: {fileID: 6204320624475675972}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Patrol_Point_1
   m_TagString: PatrolPoint
   m_Icon: {fileID: 0}

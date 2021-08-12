@@ -12,6 +12,8 @@ TagManager:
   - DroneBullet
   - PatrolPoint
   - TestDetection
+  - SecurityDrone
+  - ConeSensor
   layers:
   - Default
   - TransparentFX
@@ -32,10 +34,10 @@ TagManager:
   - DepBox
   - NPC
   - Lift
-  - 
-  - 
-  - 
-  - 
+  - Cone Sensor
+  - PatrolPoint
+  - BulletFromDrone
+  - Player
   - 
   - 
   - 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DroneBullets : MonoBehaviour
-{
+{   
     Rigidbody droneBulletRB;
 
     [SerializeField] float bulletSpeed = 5f;
@@ -11,13 +11,17 @@ public class DroneBullets : MonoBehaviour
 
     public float bulletDamage = 20f;
 
+    [HideInInspector] public Transform target;
     float playerHealth;
 
     void Start()
     {
         // Adds an instant force to the bullet to give it a constant velocity
+        transform.LookAt(target, Vector3.up);
         droneBulletRB = GetComponent<Rigidbody>();
-        droneBulletRB.AddForce(Vector3.Normalize(transform.up) * bulletSpeed);
+
+        droneBulletRB.AddForce(Vector3.Normalize(transform.forward) * bulletSpeed);
+        //Debug.Log(target.gameObject.name);
 
         // Sentry activates its shooting system
         StartCoroutine("waitForDestroyBullet");
@@ -25,7 +29,7 @@ public class DroneBullets : MonoBehaviour
 
     IEnumerator waitForDestroyBullet()
     {
-        //Waits for bulletDespawnTime number of seconds before destroying the GameObject so that bullets does not waste computing power
+        //Waits for bulletDespawnTime number of seconds before destroying the GameObject so that bullets do not waste computing power
         yield return new WaitForSeconds(bulletDespawnTimeSeconds);
         Destroy(gameObject);
     }
@@ -44,6 +48,9 @@ public class DroneBullets : MonoBehaviour
         }
 
         //Destroys the bullet when it hits something so that it does not waste computing power
-        Destroy(gameObject);
+        if (collision.gameObject.tag != "SecurityDrone")
+        {
+            Destroy(gameObject);
+        }
     }
 }
