@@ -35,51 +35,61 @@ public class NPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // initialise raycasting to detect the key
+        // initialise raycasting to detect the npc
         RaycastHit result;
         // allow raycast to only detect objects in the key layer only
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out result, interactionDistance, npcMask))
         {
             if (result.transform.name == "NPC")
             {
-                // show the collect key prompt
+                // show the collect npc prompt
                 npcPrompt.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    //if task1 not done while task2 and 3 not done...
                     if (!task1 && !(task2 && task3))
                     {
+                        //freeze screen and enable UI
                         gameObject.GetComponent<PlayerMovement>().enabled = false;
                         fpsCam.GetComponent<MouseLook>().enabled = false;
                         vandal.GetComponent<Vandal>().enabled = false;
                         Cursor.visible = true;
                         task1text.SetActive(true);
                     }
+                    //if task1 done and task2 and 3 not done
                     if (task1&&!(task2 && task3))
                     {
+                        //freeze screen and enable UI
                         gameObject.GetComponent<PlayerMovement>().enabled = false;
                         fpsCam.GetComponent<MouseLook>().enabled = false;
                         vandal.GetComponent<Vandal>().enabled = false;
                         Cursor.visible = true;
                         task234text.SetActive(true);
                     }
+                    //if task2 and 3 done and task5 not done
                     if ((task2&&task3)&&!(task5))
                     {
+                        //freeze screen and enable UI
                         gameObject.GetComponent<PlayerMovement>().enabled = false;
                         fpsCam.GetComponent<MouseLook>().enabled = false;
                         vandal.GetComponent<Vandal>().enabled = false;
                         Cursor.visible = true;
                         task5text.SetActive(true);
                     }
+                    //if task4 or 5 done and task 6 and 7 not done
                     if (((task4||task5)&&!task6)||task7)
                     {
+                        //freeze screen and enable UI
                         gameObject.GetComponent<PlayerMovement>().enabled = false;
                         fpsCam.GetComponent<MouseLook>().enabled = false;
                         vandal.GetComponent<Vandal>().enabled = false;
                         Cursor.visible = true;
                         idletext.SetActive(true);
                     }
+                    //if task6 done and task7 not done
                     if (task6&&!task7)
                     {
+                        //freeze screen and enable UI
                         gameObject.GetComponent<PlayerMovement>().enabled = false;
                         fpsCam.GetComponent<MouseLook>().enabled = false;
                         vandal.GetComponent<Vandal>().enabled = false;
@@ -92,10 +102,11 @@ public class NPC : MonoBehaviour
 
         else
         {
-            // hides collect key prompt if player is out of range
+            // hides collect npc prompt if player is out of range
             npcPrompt.SetActive(false);
         }
 
+        //referencing tasks from other script
         task1 = task1Trigger.GetComponent<Quest1>().task1;
         task2 = gameObject.GetComponent<CollectCard>().task2;
         task3 = gameObject.GetComponent<HackComputer>().task3;
@@ -107,6 +118,7 @@ public class NPC : MonoBehaviour
         task9 = gameObject.GetComponent<CollectRedDiamond>().task9;
     }
 
+    //resume the game from freezed position
     public void Resume()
     {
         gameObject.GetComponent<PlayerMovement>().enabled = true;
