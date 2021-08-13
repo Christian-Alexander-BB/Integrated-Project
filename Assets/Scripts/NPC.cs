@@ -46,7 +46,7 @@ public class NPC : MonoBehaviour
                 npcPrompt.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    if (!(task1 && task2 && task3 && task4))
+                    if (!task1 && !(task2 && task3))
                     {
                         gameObject.GetComponent<PlayerMovement>().enabled = false;
                         fpsCam.GetComponent<MouseLook>().enabled = false;
@@ -54,7 +54,7 @@ public class NPC : MonoBehaviour
                         Cursor.visible = true;
                         task1text.SetActive(true);
                     }
-                    if (task1&&!(task2&&task3&&task4))
+                    if (task1&&!(task2 && task3))
                     {
                         gameObject.GetComponent<PlayerMovement>().enabled = false;
                         fpsCam.GetComponent<MouseLook>().enabled = false;
@@ -62,7 +62,7 @@ public class NPC : MonoBehaviour
                         Cursor.visible = true;
                         task234text.SetActive(true);
                     }
-                    if ((task2&&task3&&task4)&&!(task5))
+                    if ((task2&&task3)&&!(task5))
                     {
                         gameObject.GetComponent<PlayerMovement>().enabled = false;
                         fpsCam.GetComponent<MouseLook>().enabled = false;
@@ -70,7 +70,7 @@ public class NPC : MonoBehaviour
                         Cursor.visible = true;
                         task5text.SetActive(true);
                     }
-                    if (task5&&!task7))
+                    if (((task4||task5)&&!task6)||task7)
                     {
                         gameObject.GetComponent<PlayerMovement>().enabled = false;
                         fpsCam.GetComponent<MouseLook>().enabled = false;
