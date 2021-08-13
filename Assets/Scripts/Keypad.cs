@@ -195,11 +195,6 @@ public class Keypad : MonoBehaviour
             // set crosshair to be shown again
             crosshair.SetActive(true);
 
-            // allow player movement and navigation again
-            gameObject.GetComponent<PlayerMovement>().enabled = true;
-            fpsCam.GetComponent<MouseLook>().enabled = true;
-            vandal.GetComponent<Vandal>().enabled = true;
-
             // stops user from trying again until they leave
             tryFlag = false;
         }
@@ -225,21 +220,20 @@ public class Keypad : MonoBehaviour
             // resets the input box
             enterCode.GetComponent<InputField>().text = "";
 
-            // allow player movement and navigation again
-            gameObject.GetComponent<PlayerMovement>().enabled = true;
-            fpsCam.GetComponent<MouseLook>().enabled = true;
-            vandal.GetComponent<Vandal>().enabled = true;
-
             // allows this if else statement to run only once
             alreadyRun = false;
         }
-
 
     }
 
     // function to be run by the okbutton after clicking on it
     public void checkCodeCorrect()
     {
+        // allow player movement and navigation again
+        gameObject.GetComponent<PlayerMovement>().enabled = true;
+        fpsCam.GetComponent<MouseLook>().enabled = true;
+        vandal.GetComponent<Vandal>().enabled = true;
+
         // if player tried to input code, quest considered completed
         uiPrompts.GetComponent<GameManager>().quest4.text = "4. Use keycard and enter code. (completed)";
         // task is completed for escaping
@@ -259,6 +253,7 @@ public class Keypad : MonoBehaviour
             triedCodeFlag = true;
             // for the above else if statement to run only once
             alreadyRun = true;
+
             // stops user from trying again until they leave
             tryFlag = false;
         }
