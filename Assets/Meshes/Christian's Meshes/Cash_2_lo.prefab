@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6805383714689878863}
   - component: {fileID: 7628622761964766442}
   - component: {fileID: 5637020959162396704}
+  - component: {fileID: 7972170069746053720}
   m_Layer: 0
   m_Name: Cash_2_lo
   m_TagString: Untagged
@@ -82,3 +83,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7972170069746053720
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6141296641902236149}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5914527355099859691, guid: 0f4cee3ab00a4cb4c937dba87be0cdfc, type: 3}
