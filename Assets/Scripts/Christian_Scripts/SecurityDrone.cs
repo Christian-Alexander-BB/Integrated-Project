@@ -33,9 +33,10 @@ public class SecurityDrone : MonoBehaviour
     public bool stopShooting = false;
 
     //Initialize drone health and damage taken variables
-    [SerializeField] float health = 100f;
     [SerializeField] GameObject assaultRifleBullet;
-    float vandalDamage = 20f;
+
+    public float vandalDamage = 20f;
+    public float health = 100f;
 
     //Debug variables
 
@@ -86,14 +87,16 @@ public class SecurityDrone : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
+        Debug.Log("Hit something: " + collision.gameObject.tag);
         //Take damage from the vandal bullet
         if (collision.gameObject.tag == "VandalBullet")
         {
+            Debug.Log("Bullet hit drone");
             DamageDrone();
         }
 
-        // Move to a new patrolpoint
-        else if(collision.gameObject.tag == "PatrolPoint" && !playerInRange && allowPatrol)
+        //Move to a new patrolpoint
+        if(collision.gameObject.tag == "PatrolPoint" && !playerInRange && allowPatrol)
         {
             timeStayedInPatrolPoint = Time.time;
             MoveToNewPatrolPoint();
