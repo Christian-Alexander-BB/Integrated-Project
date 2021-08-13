@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 7900040215075260615}
   - component: {fileID: 8035987504714826255}
   - component: {fileID: 8646750472376019952}
+  - component: {fileID: 885974429964034734}
   m_Layer: 0
   m_Name: pCube11
   m_TagString: Untagged
@@ -116,6 +117,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &885974429964034734
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3002450066941706299}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 664456749670281567, guid: e794a67c2d726b34790a2a516accc751, type: 3}
 --- !u!1 &3031228439065903385
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,6 +142,7 @@ GameObject:
   - component: {fileID: 2637817518503547585}
   - component: {fileID: 8327753175279369701}
   - component: {fileID: 533269415154171849}
+  - component: {fileID: 7385036786364246940}
   m_Layer: 0
   m_Name: table 1
   m_TagString: Untagged
@@ -198,6 +214,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7385036786364246940
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3031228439065903385}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6317805809608689028, guid: e794a67c2d726b34790a2a516accc751, type: 3}
 --- !u!1 &4826387325581492239
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +239,7 @@ GameObject:
   - component: {fileID: 679209469670105872}
   - component: {fileID: 1928798394644137695}
   - component: {fileID: 3710343380394827686}
+  - component: {fileID: 7250407184019559132}
   m_Layer: 0
   m_Name: pCube4
   m_TagString: Untagged
@@ -280,6 +311,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7250407184019559132
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4826387325581492239}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3861478300804232965, guid: e794a67c2d726b34790a2a516accc751, type: 3}
 --- !u!1 &5951252068524661023
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +368,7 @@ GameObject:
   - component: {fileID: 166733601421493819}
   - component: {fileID: 6875501943286748071}
   - component: {fileID: 7354810217665161933}
+  - component: {fileID: 9032093877299041761}
   m_Layer: 0
   m_Name: pCube7
   m_TagString: Untagged
@@ -394,6 +440,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &9032093877299041761
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6692782565153907327}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7759331768739107841, guid: e794a67c2d726b34790a2a516accc751, type: 3}
 --- !u!1 &7396417960969994447
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +498,7 @@ GameObject:
   - component: {fileID: 1109841510815101408}
   - component: {fileID: 6784562393222142984}
   - component: {fileID: 677128174097606689}
+  - component: {fileID: 8430578158772904328}
   m_Layer: 0
   m_Name: pCube12
   m_TagString: Untagged
@@ -509,6 +570,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8430578158772904328
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7700918277718704984}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7434549690534084444, guid: e794a67c2d726b34790a2a516accc751, type: 3}
 --- !u!1 &8590977693328772839
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +595,7 @@ GameObject:
   - component: {fileID: 8438862421145385428}
   - component: {fileID: 2443460554774096439}
   - component: {fileID: 8558590100469727261}
+  - component: {fileID: 3333819783976382479}
   m_Layer: 0
   m_Name: pCube3
   m_TagString: Untagged
@@ -591,6 +667,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3333819783976382479
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8590977693328772839}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3369316746193770658, guid: e794a67c2d726b34790a2a516accc751, type: 3}
 --- !u!1 &9131281394343941010
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,6 +692,7 @@ GameObject:
   - component: {fileID: 3316507103955089117}
   - component: {fileID: 852193527501402245}
   - component: {fileID: 7528708453845923571}
+  - component: {fileID: 4945020438733764427}
   m_Layer: 0
   m_Name: pCube1
   m_TagString: Untagged
@@ -673,3 +764,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4945020438733764427
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9131281394343941010}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4068373912626513877, guid: e794a67c2d726b34790a2a516accc751, type: 3}

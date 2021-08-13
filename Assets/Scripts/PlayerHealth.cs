@@ -20,6 +20,8 @@ public class PlayerHealth : MonoBehaviour
     public float timer;
     // set a second timer 
     public float timer2;
+    // set a third timer;
+    public float timer3;
     // bool to check if player is taking damage
     public bool notTakingDamage = true;
     float droneBulletDamage;
@@ -38,6 +40,12 @@ public class PlayerHealth : MonoBehaviour
         if (health < maxHealth && health > 0)
         {
             timer += Time.deltaTime;
+
+            // if the player has not taken damage from the sentry bullets for the past 2 seconds, not taking damage is true
+            if (timer3 >= 2f)
+            {
+                notTakingDamage = true;
+            }
 
             // if player is taking damage, stop timer
             if (!notTakingDamage)

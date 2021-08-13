@@ -24,8 +24,6 @@ public class NPC : MonoBehaviour
     public GameObject task5text;
     public GameObject task7text;
     public GameObject idletext;
-    public int count = 0;
-
 
     // Start is called before the first frame update
     void Start()
@@ -48,32 +46,47 @@ public class NPC : MonoBehaviour
                 npcPrompt.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    gameObject.GetComponent<PlayerMovement>().enabled = false;
-                    fpsCam.GetComponent<MouseLook>().enabled = false;
-                    vandal.GetComponent<Vandal>().enabled = false;
-                    Cursor.visible = true;
                     if (!task1 && !(task2 && task3))
                     {
                         task1text.SetActive(true);
+                        gameObject.GetComponent<PlayerMovement>().enabled = false;
+                        fpsCam.GetComponent<MouseLook>().enabled = false;
+                        vandal.GetComponent<Vandal>().enabled = false;
+                        Cursor.visible = true;
                     }
                     if (task1&&!(task2 && task3))
                     {
                         task234text.SetActive(true);
+                        gameObject.GetComponent<PlayerMovement>().enabled = false;
+                        fpsCam.GetComponent<MouseLook>().enabled = false;
+                        vandal.GetComponent<Vandal>().enabled = false;
+                        Cursor.visible = true;
                     }
                     if ((task2&&task3)&&!(task5))
                     {
                         task5text.SetActive(true);
+                        gameObject.GetComponent<PlayerMovement>().enabled = false;
+                        fpsCam.GetComponent<MouseLook>().enabled = false;
+                        vandal.GetComponent<Vandal>().enabled = false;
+                        Cursor.visible = true;
                     }
                     if (((task4||task5)&&!task6)||task7)
                     {
                         idletext.SetActive(true);
+                        gameObject.GetComponent<PlayerMovement>().enabled = false;
+                        fpsCam.GetComponent<MouseLook>().enabled = false;
+                        vandal.GetComponent<Vandal>().enabled = false;
+                        Cursor.visible = true;
                     }
                     if (task6&&!task7)
                     {
                         task7text.SetActive(true);
+                        gameObject.GetComponent<PlayerMovement>().enabled = false;
+                        fpsCam.GetComponent<MouseLook>().enabled = false;
+                        vandal.GetComponent<Vandal>().enabled = false;
+                        Cursor.visible = true;
                     }
                 }
-                
             }
         }
 
@@ -82,6 +95,7 @@ public class NPC : MonoBehaviour
             // hides collect key prompt if player is out of range
             npcPrompt.SetActive(false);
         }
+
         task1 = task1Trigger.GetComponent<Quest1>().task1;
         task2 = gameObject.GetComponent<CollectCard>().task2;
         task3 = gameObject.GetComponent<HackComputer>().task3;

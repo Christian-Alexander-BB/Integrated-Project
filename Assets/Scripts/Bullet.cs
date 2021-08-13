@@ -21,9 +21,10 @@ public class Bullet : MonoBehaviour
         // movement for the bullet
         transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
 
-        if (!target.GetComponent<PlayerHealth>().notTakingDamage)
+        // check if the player is still taking damage
+        if (target.GetComponent<PlayerHealth>().timer3 <= 2f)
         {
-            timer += Time.deltaTime;
+            target.GetComponent<PlayerHealth>().timer3 += Time.deltaTime;
         }
     }
 
@@ -33,16 +34,14 @@ public class Bullet : MonoBehaviour
         if (other.tag == "Player")
         {
             target = other.gameObject;
+            // stops the timer that detects whether they player has stopped taking damage
+            target.GetComponent<PlayerHealth>().timer3 = 0;
             // player takes damage
             target.GetComponent<PlayerHealth>().health -= damage;
             // stops player health regen
             target.GetComponent<PlayerHealth>().notTakingDamage = false;
+            // takes damage panel
             redScreen.SetActive(true);
-            // 
-            if (timer >= 1f)
-            {
-                target.GetComponent<PlayerHealth>().notTakingDamage = true;
-            }
             Destroy(gameObject);
         }
     }
