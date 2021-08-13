@@ -12,7 +12,6 @@ public class Bullet : MonoBehaviour
     public float damage;
     // player
     public GameObject target;
-
     // timer
     public float timer;
 
@@ -21,17 +20,11 @@ public class Bullet : MonoBehaviour
     {
         // movement for the bullet
         transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
-    }
 
-    void FixedUpdate()
-    {
-        timer += 1;
-
-        if (timer >= 100)
+        if (!target.GetComponent<PlayerHealth>().notTakingDamage)
         {
-            target.GetComponent<PlayerHealth>().notTakingDamage = true;
+            timer += Time.deltaTime;
         }
-
     }
 
     void OnTriggerEnter(Collider other)
@@ -39,13 +32,17 @@ public class Bullet : MonoBehaviour
         // if the bullet hits the player, decreases the health of the player and destroys the bullet
         if (other.tag == "Player")
         {
-            timer = 0;
             target = other.gameObject;
             // player takes damage
             target.GetComponent<PlayerHealth>().health -= damage;
             // stops player health regen
             target.GetComponent<PlayerHealth>().notTakingDamage = false;
             redScreen.SetActive(true);
+            // 
+            if (timer >= 1f)
+            {
+                target.GetComponent<PlayerHealth>().notTakingDamage = true;
+            }
             Destroy(gameObject);
         }
     }

@@ -18,6 +18,8 @@ public class PlayerHealth : MonoBehaviour
     public int regeneration = 1;
     // set a timer
     public float timer;
+    // set a second timer 
+    public float timer2;
     // bool to check if player is taking damage
     public bool notTakingDamage = true;
     float droneBulletDamage;
@@ -32,37 +34,42 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-    }
-
-    void FixedUpdate()
-    {
         // health regeneration if player health is more than 0 and less than max health
         if (health < maxHealth && health > 0)
         {
-            if (notTakingDamage)
-            {
-                // timer for regen
-                timer += 1;
-            }
+            timer += Time.deltaTime;
 
             // if player is taking damage, stop timer
-            else if (!notTakingDamage)
+            if (!notTakingDamage)
             {
-                timer = 0;
+                timer2 = 0;
             }
 
-            if (timer % 100 == 0)
+            if (notTakingDamage)
             {
-                // if player is not taking damage, health regen
+                if (timer2 < 2f)
+                {
+                    // timer for regen
+                    timer2 += Time.deltaTime;
+                }
+
+                else if (timer2 >= 2f)
+                {
+                    notTakingDamage = true;
+                }
+
+            }
+
+            if (timer >= 1f && timer2 >= 2f)
+            {
                 if (notTakingDamage)
                 {
-                    if (timer >= 100)
-                    {
-                        healthRegen();
-                        redScreen.SetActive(false);
-                    }
+                    timer = 0;
+                    healthRegen();
+                    redScreen.SetActive(false);
                 }
             }
+            
         }
 
         // if player have less than or equals to 0 health, player dies
@@ -71,7 +78,6 @@ public class PlayerHealth : MonoBehaviour
             health = 0;
             Die();
         }
-        
     }
 
     public void Die()
