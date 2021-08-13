@@ -87,11 +87,9 @@ public class SecurityDrone : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("Hit something: " + collision.gameObject.tag);
         //Take damage from the vandal bullet
         if (collision.gameObject.tag == "VandalBullet")
         {
-            Debug.Log("Bullet hit drone");
             DamageDrone();
         }
 
